@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+
 import { usePathname } from 'next/navigation';
 import { Heart, Menu, X, ChevronDown, ShoppingBag, Globe } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
@@ -158,7 +159,7 @@ const Navbar = () => {
 
         {/* Center: Brand Logo */}
         <Link href="/" className="navbar-logo" onClick={handleLinkClick}>
-          <Image src="/images/image.png" alt="Kelly Dress" width={200} height={80} className="logo-image" />
+          <span className="logo-text">Kelly Dress</span>
         </Link>
 
         {/* Right Side: Links & Actions */}
@@ -292,7 +293,9 @@ const Navbar = () => {
         .navbar-wrapper.scrolled .navbar-burger,
         .navbar-wrapper.always-solid .navbar-burger,
         .navbar-wrapper.scrolled .navbar-action-btn,
-        .navbar-wrapper.always-solid .navbar-action-btn {
+        .navbar-wrapper.always-solid .navbar-action-btn,
+        .navbar-wrapper.scrolled .logo-text,
+        .navbar-wrapper.always-solid .logo-text {
           color: var(--color-black);
         }
 
@@ -381,11 +384,16 @@ const Navbar = () => {
           display: flex;
           align-items: center;
           justify-content: center;
+          text-decoration: none;
         }
 
-        .navbar-logo {
-          display: flex;
-          align-items: center;
+        .logo-text {
+          font-family: var(--font-serif);
+          font-size: 1.6rem;
+          font-style: italic;
+          color: var(--color-white);
+          letter-spacing: 0.08em;
+          white-space: nowrap;
         }
 
         .navbar-actions {
