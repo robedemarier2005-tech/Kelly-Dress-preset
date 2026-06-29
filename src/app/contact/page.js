@@ -1,6 +1,6 @@
 'use client';
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react';
+import React from 'react';
+import { Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from '../../context/LanguageContext';
 
 const Instagram = ({ size = 24, className }) => (
@@ -41,32 +41,6 @@ const Facebook = ({ size = 24, className }) => (
 
 export default function Contact() {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    weddingDate: '',
-    message: ''
-  });
-  const [isSent, setIsSent] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setTimeout(() => {
-      setIsSent(true);
-    }, 400);
-  };
-
-  const handleReset = () => {
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      weddingDate: '',
-      message: ''
-    });
-    setIsSent(false);
-  };
 
   return (
     <div className="contact-wrapper">
@@ -111,84 +85,39 @@ export default function Contact() {
 
           {/* Form Column */}
           <div className="form-column">
-            {!isSent ? (
-              <form onSubmit={handleSubmit} className="luxury-contact-form">
+            <div className="luxury-contact-form disabled-form">
                 <h3>{t('contact.envoyerMessage')}</h3>
 
                 <div className="form-group">
                   <label className="form-label">{t('contact.nomComplet')}</label>
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    required 
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  />
+                  <input type="text" className="form-input" disabled />
                 </div>
 
                 <div className="form-row-split">
                   <div className="form-group flex-1">
                     <label className="form-label">{t('contact.email')}</label>
-                    <input 
-                      type="email" 
-                      className="form-input" 
-                      required 
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    />
+                    <input type="email" className="form-input" disabled />
                   </div>
                   <div className="form-group flex-1">
                     <label className="form-label">{t('contact.telephoneLabel')}</label>
-                    <input 
-                      type="tel" 
-                      className="form-input" 
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    />
+                    <input type="tel" className="form-input" disabled />
                   </div>
                 </div>
 
                 <div className="form-group">
                   <label className="form-label">{t('contact.dateMariage')}</label>
-                  <input 
-                    type="date" 
-                    className="form-input"
-                    value={formData.weddingDate}
-                    onChange={(e) => setFormData({...formData, weddingDate: e.target.value})}
-                  />
+                  <input type="date" className="form-input" disabled />
                 </div>
 
                 <div className="form-group">
                   <label className="form-label">{t('contact.message')}</label>
-                  <textarea 
-                    className="form-textarea" 
-                    rows="5" 
-                    required
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    placeholder={t('contact.placeholderMessage')}
-                  ></textarea>
+                  <textarea className="form-textarea" rows="5" disabled></textarea>
                 </div>
 
-                <button type="submit" className="btn-gold btn-send-message">
-                  <Send size={14} /> <span>{t('contact.envoyer')}</span>
-                </button>
-              </form>
-            ) : (
-              <div className="contact-success-box">
-                <div className="success-icon-ring">
-                  <Mail size={32} />
-                </div>
-                <h2>{t('contact.messageEnvoye')}</h2>
-                <p>{t('contact.cher')}(e) <strong>{formData.name}</strong>,</p>
-                <p>{t('contact.messageRecu')}</p>
-                <p>{t('contact.messageReponse')}</p>
-                
-                <button onClick={handleReset} className="btn-gold" style={{ marginTop: '20px' }}>
-                  {t('contact.nouveauMessage')}
+                <button type="button" className="btn-gold btn-send-message disabled-btn" disabled>
+                  Bientôt...
                 </button>
               </div>
-            )}
           </div>
         </div>
       </section>
@@ -311,6 +240,25 @@ export default function Contact() {
 
         .flex-1 {
           flex: 1;
+        }
+
+        .disabled-form input,
+        .disabled-form textarea {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .disabled-btn {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          margin-top: 20px;
+          opacity: 0.5;
+          cursor: not-allowed;
+          background-color: #888 !important;
+          border-color: #888 !important;
         }
 
         .btn-send-message {

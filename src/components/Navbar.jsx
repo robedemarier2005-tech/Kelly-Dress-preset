@@ -157,7 +157,7 @@ const Navbar = () => {
 
         {/* Center: Brand Logo */}
         <Link href="/" className="navbar-logo" onClick={handleLinkClick}>
-          <span className="logo-text">Kelly Dress</span>
+          <img src="/images/logo.jpg" alt="Kelly Dress" className="logo-image" />
         </Link>
 
         {/* Right Side: Links & Actions */}
@@ -381,24 +381,10 @@ const Navbar = () => {
         }
 
         .logo-image {
-          height: 50px;
+          height: 45px;
           width: auto;
           object-fit: contain;
-        }
-
-        .logo-text {
-          font-family: var(--font-serif);
-          font-size: 1.6rem;
-          letter-spacing: 0.15em;
-          color: var(--color-white);
-          font-weight: 300;
-          transition: var(--transition-medium);
-          font-style: italic;
-        }
-
-        .navbar-wrapper.scrolled .logo-text,
-        .navbar-wrapper.always-solid .logo-text {
-          color: var(--color-black);
+          display: block;
         }
 
         .navbar-actions {

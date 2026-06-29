@@ -144,8 +144,8 @@ export default function ProductDetailClient({ dress, similarDresses }) {
             </button>
             
             <div className="action-row-split">
-              <button className="btn-outline action-btn flex-1" onClick={() => setShowQuoteForm(true)}>
-                <FileText size={16} /> <span>Demander un devis</span>
+              <button className="btn-outline action-btn flex-1 disabled" disabled>
+                <FileText size={16} /> <span>Demandez un devis — Bientôt...</span>
               </button>
               
               <button 

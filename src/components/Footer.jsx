@@ -73,8 +73,6 @@ const Footer = () => {
               <li><Link href="/">{t('nav.maison')}</Link></li>
               <li><Link href="/catalog">{t('nav.catalogue')}</Link></li>
               <li><Link href="/about">{t('nav.aPropos')}</Link></li>
-              <li><Link href="/blog">{t('nav.actualites')}</Link></li>
-              <li><Link href="/boutiques">{t('nav.collections')}</Link></li>
               <li><Link href="/contact">{t('nav.contact')}</Link></li>
             </ul>
           </div>
@@ -82,12 +80,12 @@ const Footer = () => {
           {/* Column 3: Contact/Hours */}
           <div className="footer-col address-col">
             <h3>{t('footer.maisonParis')}</h3>
-            <p>{t('footer.adresse')}</p>
+
             <p className="contact-details">
               {t('footer.email')}<br />
               {t('footer.telephone')}
             </p>
-            <p className="hours">{t('footer.horaires')}</p>
+
           </div>
 
           {/* Column 4: Instagram Coming Soon */}

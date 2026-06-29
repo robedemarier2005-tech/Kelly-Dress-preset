@@ -15,15 +15,32 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "Kelly Dress | Robes de Mariée de Luxe & Haute Couture Parisienne",
-  description: "Découvrez Kelly Dress, maison de haute couture parisienne créant des robes de mariée de luxe sur mesure. L'élégance, le raffinement et l'excellence artisanale.",
+  title: "Kelly Dress",
+  description: "Maison de haute couture parisienne créant des robes de mariée de luxe sur mesure. L'élégance et l'excellence artisanale pour votre jour unique.",
+  icons: {
+    icon: "/images/logo.jpg",
+  },
   openGraph: {
-    title: "Kelly Dress | Robes de Mariée de Luxe & Haute Couture Parisienne",
-    description: "Découvrez Kelly Dress, maison de haute couture parisienne créant des robes de mariée de luxe sur mesure. L'élégance, le raffinement et l'excellence artisanale.",
+    title: "Kelly Dress",
+    description: "Maison de haute couture parisienne créant des robes de mariée de luxe sur mesure.",
     url: "https://kellydress.com",
     siteName: "Kelly Dress",
     locale: "fr_FR",
     type: "website",
+    images: [
+      {
+        url: "/images/preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Kelly Dress - Haute Couture Parisienne",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kelly Dress",
+    description: "Maison de haute couture parisienne créant des robes de mariée de luxe sur mesure.",
+    images: ["/images/preview.png"],
   },
   robots: "index, follow",
 };
