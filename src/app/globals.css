@@ -1,0 +1,349 @@
+@import "tailwindcss";
+
+/* Kelly Dress - Luxury Design System */
+
+:root {
+  /* Color Palette */
+  --color-white: #ffffff;
+  --color-ivory: #fdfbf9;
+  --color-beige-light: #f5f1e9;
+  --color-beige-dark: #eae3d5;
+  --color-gold: #c5a880;
+  --color-gold-hover: #b4966e;
+  --color-black: #111111;
+  --color-charcoal: #2a2a2a;
+  --color-gray-light: #eeeeee;
+  --color-gray-medium: #888888;
+  --color-overlay: rgba(0, 0, 0, 0.4);
+  --color-white-overlay: rgba(255, 255, 255, 0.85);
+
+  /* Fonts (mapped to Next.js CSS variables in layout.js) */
+  --font-serif: var(--font-serif), 'Cormorant Infant', serif;
+  --font-sans: var(--font-sans), 'Montserrat', sans-serif;
+
+  /* Header heights */
+  --navbar-height: 80px;
+
+  /* Transitions */
+  --transition-slow: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-medium: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-fast: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Reset overrides */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-ivory);
+  color: var(--color-black);
+  font-family: var(--font-sans);
+  font-size: 16px;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: var(--color-ivory);
+  color: var(--color-black);
+  font-family: var(--font-sans);
+}
+
+/* Custom Selection */
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-hover);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+p, span, a, li, input, textarea, button {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+/* Layout Utilities */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+.section-padding {
+  padding: 120px 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 80px 0;
+  }
+}
+
+/* Elegant Title Header */
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-gold);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: var(--color-black);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Premium Buttons */
+.btn-gold {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  padding: 15px 40px;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-gold:hover {
+  background-color: var(--color-black);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+  padding: 15px 40px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  padding: 15px 40px;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-outline-gold:hover {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-text {
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-black);
+  position: relative;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+
+.btn-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-black);
+  transform: scaleX(0.3);
+  transform-origin: left;
+  transition: var(--transition-medium);
+}
+
+.btn-text:hover::after {
+  transform: scaleX(1);
+}
+
+/* Animations Classes */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Custom Lazy Load Blur */
+.lazy-image {
+  filter: blur(10px);
+  transition: filter 1s ease;
+}
+
+.lazy-image.loaded {
+  filter: blur(0);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.form-input, .form-textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-beige-dark);
+  padding: 10px 0;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  color: var(--color-black);
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-bottom: 1px solid var(--color-gold);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Loader Styles */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-ivory);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader-logo {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.preloader-bar {
+  width: 100px;
+  height: 1px;
+  background-color: var(--color-beige-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.preloader-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--color-gold);
+  animation: progress 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes progress {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
