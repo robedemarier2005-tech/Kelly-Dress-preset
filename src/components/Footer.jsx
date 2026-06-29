@@ -90,8 +90,8 @@ const Footer = () => {
 
           {/* Column 4: Instagram Coming Soon */}
           <div className="footer-col instagram-col">
-            <h3>Instagram</h3>
-            <p className="instagram-coming-soon">On ouvrira bientôt un Instagram</p>
+            <h3>{t('footer.instagramTitle')}</h3>
+            <p className="instagram-coming-soon">{t('footer.instagramComingSoon')}</p>
           </div>
         </div>
 

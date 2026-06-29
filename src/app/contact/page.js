@@ -67,7 +67,7 @@ export default function Contact() {
               <Phone size={18} />
               <div>
                 <h4>{t('contact.telephone')}</h4>
-                <p>0626751311</p>
+                <p>06 26 75 13 11</p>
               </div>
             </div>
 

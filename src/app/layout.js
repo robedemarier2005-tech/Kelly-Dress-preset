@@ -18,9 +18,6 @@ export const metadata = {
   metadataBase: new URL("https://www.kellydress.co"),
   title: "Kelly Dress",
   description: "Maison de haute couture parisienne créant des robes de mariée de luxe sur mesure. L'élégance et l'excellence artisanale pour votre jour unique.",
-  icons: {
-    icon: "/images/logo.jpg",
-  },
   openGraph: {
     title: "Kelly Dress",
     description: "Maison de haute couture parisienne créant des robes de mariée de luxe sur mesure.",
