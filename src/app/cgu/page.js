@@ -1,5 +1,7 @@
 'use client';
+import { useEffect } from 'react';
 export default function CGU() {
+  useEffect(() => { document.title = 'CGU | Kelly Dress'; }, []);
   return (
     <div className="legal-page">
       <div className="container">
@@ -10,37 +12,61 @@ export default function CGU() {
         <div className="legal-content">
           <section>
             <h2>1. Objet</h2>
-            <p>Les présentes Conditions Générales d'Utilisation (CGU) régissent l'utilisation du site internet Kelly Dress. En accédant à ce site, vous acceptez ces conditions.</p>
+            <p>Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation du site internet Kelly Dress (ci-après "le Site"), édité par la société Kelly Dress. En accédant au Site et en naviguant sur celui-ci, vous acceptez sans réserve l'intégralité des présentes conditions. Si vous n'acceptez pas ces conditions, nous vous invitons à ne pas utiliser notre Site.</p>
           </section>
 
           <section>
             <h2>2. Accès au site</h2>
-            <p>L'accès au site est gratuit et ouvert à tous les utilisateurs. Le site s'efforce de rester accessible 24h/24 et 7j/7, mais ne peut garantir une disponibilité permanente.</p>
+            <p>L'accès au Site est gratuit et ouvert à toute personne disposant d'un accès à internet. Le Site est accessible 24 heures sur 24 et 7 jours sur 7, sauf en cas de force majeure, de maintenance technique ou de décision de la direction de Kelly Dress. Nous mettons tout en œuvre pour garantir la continuité du service, mais ne saurions être tenus responsables des interruptions liées au réseau internet ou aux infrastructures d'hébergement.</p>
+            <p>Kelly Dress se réserve le droit de modifier, suspendre ou interrompre l'accès à tout ou partie du Site à tout moment, sans préavis, pour des raisons techniques, de maintenance ou de mise à jour du contenu.</p>
           </section>
 
           <section>
             <h2>3. Compte utilisateur</h2>
-            <p>Pour certaines fonctionnalités, la création d'un compte peut être nécessaire. Vous vous engagez à fournir des informations exactes et à maintenir la confidentialité de vos identifiants de connexion.</p>
+            <p>Pour accéder à certaines fonctionnalités du Site (telles que la gestion des favoris, le suivi des commandes ou l'inscription à la newsletter), la création d'un compte personnel peut être requise. Vous vous engagez à fournir des informations exactes, complètes et à jour lors de la création de votre compte.</p>
+            <p>Vous êtes seul responsable de la confidentialité de vos identifiants de connexion (nom d'utilisateur et mot de passe). Toute activité réalisée depuis votre compte est présumée émaner de votre personne. En cas de perte, de vol ou d'utilisation non autorisée de vos identifiants, vous devez en informer immédiatement Kelly Dress.</p>
+            <p>Nous nous réservons le droit de supprimer tout compte utilisateur en cas de non-respect des présentes CGU ou de comportement frauduleux.</p>
           </section>
 
           <section>
             <h2>4. Commandes et paiements</h2>
-            <p>Les commandes passées sur le site sont fermes et définitives après validation du paiement. Les prix sont indiqués en euros toutes taxes comprises.</p>
+            <p>Les commandes passées sur le Site sont fermes et définitives après validation du paiement. Les prix affichés sont indiqués en euros (€) toutes taxes comprises (TTC). Les frais de livraison sont précisés avant la validation finale de la commande.</p>
+            <p>Le paiement s'effectue par carte bancaire via une plateforme de paiement sécurisée. Les informations bancaires transmises sont cryptées et ne sont jamais stockées sur nos serveurs. Kelly Dress se réserve le droit de refuser ou d'annuler toute commande en cas de litige antérieur, d'incident de paiement ou de suspicion de fraude.</p>
+            <p>En passant commande, vous certifiez être majeur et juridiquement capable de contracter. La confirmation de commande vous sera envoyée par email avec le récapitulatif détaillé de vos achats.</p>
           </section>
 
           <section>
-            <h2>5. Propriété intellectuelle</h2>
-            <p>Tous les éléments du site (textes, images, vidéos, logos) sont la propriété de Kelly Dress ou de ses partenaires. Toute reproduction est interdite sans autorisation.</p>
+            <h2>5. Livraison et rétractation</h2>
+            <p>Les délais de livraison sont indiqués lors de la commande et peuvent varier selon la destination et le type de confection (sur-mesure ou prêt-à-porter). Kelly Dress s'engage à traiter votre commande dans les meilleurs délais.</p>
+            <p>Conformément à l'article L221-18 du Code de la Consommation, vous disposez d'un délai de rétractation de 14 jours à compter de la réception de votre commande pour les produits standards. Pour les créations sur-mesure, le droit de rétractation ne s'applique pas conformément à l'article L221-28 du Code de la Consommation.</p>
           </section>
 
           <section>
-            <h2>6. Données personnelles</h2>
-            <p>Les données personnelles collectées sont traitées conformément à notre Politique de Confidentialité et au RGPD.</p>
+            <h2>6. Propriété intellectuelle</h2>
+            <p>Tous les éléments du Site (textes, illustrations, photographies, vidéos, logos, icônes, codes sources, base de données) sont la propriété exclusive de Kelly Dress ou de ses partenaires et sont protégés par les lois françaises et internationales sur la propriété intellectuelle.</p>
+            <p>Toute reproduction, représentation, modification, adaptation, diffusion ou exploitation, partielle ou totale, du contenu du Site, par quelque procédé que ce soit, sans l'autorisation écrite et préalable de Kelly Dress, est strictement interdite et constitue un acte de contrefaçon passible de poursuites judiciaires.</p>
           </section>
 
           <section>
-            <h2>7. Modification des CGU</h2>
-            <p>Kelly Dress se réserve le droit de modifier ces CGU à tout moment. Les utilisateurs seront informés des modifications par email sur le site.</p>
+            <h2>7. Données personnelles</h2>
+            <p>Les données personnelles collectées sur le Site sont traitées dans le respect de notre Politique de Confidentialité et conformément au Règlement Général sur la Protection des Données (RGPD) 2016/679 du Parlement européen. Vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données.</p>
+            <p>Pour exercer ces droits, veuillez nous contacter à l'adresse email contact@kellydress.com. Nous nous engageons à traiter votre demande dans un délai maximal de 30 jours.</p>
+          </section>
+
+          <section>
+            <h2>8. Responsabilité</h2>
+            <p>Kelly Dress s'efforce d'assurer l'exactitude et la mise à jour des informations publiées sur le Site. Toutefois, nous ne pouvons garantir l'absence d'erreurs ou d'omissions. L'utilisation du Site se fait sous votre seule responsabilité.</p>
+            <p>Kelly Dress ne saurait être tenue responsable des dommages directs ou indirects résultant de l'utilisation du Site, notamment en cas d'interruption du service, d'intrusion extérieure, de présence de virus informatiques ou de tout fait indépendant de notre volonté.</p>
+          </section>
+
+          <section>
+            <h2>9. Modification des CGU</h2>
+            <p>Kelly Dress se réserve le droit de modifier les présentes Conditions Générales d'Utilisation à tout moment, notamment pour s'adapter aux évolutions législatives, réglementaires ou techniques. Les utilisateurs seront informés des modifications par une notification sur le Site ou par email. L'utilisation continue du Site après la publication des modifications vaut acceptation des nouvelles CGU.</p>
+          </section>
+
+          <section>
+            <h2>10. Droit applicable et juridiction</h2>
+            <p>Les présentes CGU sont régies par le droit français. En cas de litige, les parties s'engagent à rechercher une solution amiable avant toute action judiciaire. À défaut d'accord, les tribunaux compétents seront ceux du ressort du siège social de Kelly Dress.</p>
           </section>
         </div>
       </div>

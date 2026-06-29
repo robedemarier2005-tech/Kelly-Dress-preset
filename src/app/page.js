@@ -6,6 +6,7 @@ import { useTranslation } from '../context/LanguageContext';
 
 export default function Home() {
   const { t } = useTranslation();
+  useEffect(() => { document.title = 'Kelly Dress | Robes de Mariée Haute Couture Parisienne'; }, []);
   const collectionRefs = useRef([]);
   const [activeSlide, setActiveSlide] = useState(0);
   const [showMore, setShowMore] = useState(false);

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { Heart, ArrowRight, Trash2 } from 'lucide-react';
 import { useWishlist } from '../../context/WishlistContext';
@@ -7,6 +7,7 @@ import { useTranslation } from '../../context/LanguageContext';
 
 export default function Wishlist() {
   const { t } = useTranslation();
+  useEffect(() => { document.title = 'Mes Favoris | Kelly Dress'; }, []);
   const { wishlist, removeFromWishlist } = useWishlist();
 
   return (
@@ -17,6 +18,7 @@ export default function Wishlist() {
           <span className="section-subtitle">{t('wishlist.title')}</span>
           <h1 className="section-title">{t('wishlist.title')}</h1>
           <p className="wishlist-intro">{t('wishlist.emptyDesc')}</p>
+          <p className="wishlist-intro-sub">Créez votre sélection personnelle de robes coup de cœur en naviguant dans notre catalogue. Ajoutez vos modèles préférés à votre liste de favoris pour les retrouver facilement, les comparer et prendre le temps de choisir la robe qui vous fera rêver. Votre liste est privée et accessible à tout moment.</p>
         </div>
       </section>
 

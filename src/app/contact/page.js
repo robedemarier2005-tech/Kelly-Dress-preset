@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useTranslation } from '../../context/LanguageContext';
 
@@ -41,6 +41,7 @@ const Facebook = ({ size = 24, className }) => (
 
 export default function Contact() {
   const { t } = useTranslation();
+  useEffect(() => { document.title = 'Contact | Kelly Dress'; }, []);
 
   return (
     <div className="contact-wrapper">
@@ -50,6 +51,7 @@ export default function Contact() {
           <span className="section-subtitle">{t('contact.title')}</span>
           <h1 className="section-title">{t('contact.nousEcrire')}</h1>
           <p className="contact-intro">{t('contact.intro')}</p>
+          <p className="contact-intro-sub">Notre équipe de conseillères haute couture est à votre disposition pour vous accompagner dans la création de votre robe de mariée de rêve. Que vous ayez une question sur nos collections, un projet de création sur-mesure ou que vous souhaitiez réserver un rendez-vous privé dans notre atelier, nous répondons à toutes vos demandes avec la plus grande attention. Chaque future mariée mérite une expérience unique et personnalisée, et c'est avec passion que nous vous guidons vers la robe qui révélera toute votre élégance le jour J.</p>
         </div>
       </section>
 

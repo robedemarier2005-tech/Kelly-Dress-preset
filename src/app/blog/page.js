@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { blogArticles } from '../../data/blog';
@@ -7,6 +7,7 @@ import { useTranslation } from '../../context/LanguageContext';
 
 export default function Blog() {
   const { t } = useTranslation();
+  useEffect(() => { document.title = 'Actualités | Kelly Dress'; }, []);
   const [activeCategory, setActiveCategory] = useState('All');
 
   const categories = ['All', 'Défilés', 'Évènements', 'Nouveautés'];

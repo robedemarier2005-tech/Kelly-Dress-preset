@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { Heart, SlidersHorizontal, X, Search, ChevronDown, ChevronUp } from 'lucide-react';
 import { useWishlist } from '../../context/WishlistContext';
 import { useTranslation } from '../../context/LanguageContext';
+import { useEffect } from 'react';
 
 function CatalogContent() {
   const { t } = useTranslation();
@@ -64,6 +65,16 @@ function CatalogContent() {
   const styles = ['All', ...new Set(dressesData.map(d => d.style))];
   const priceRanges = ['All', 'Moins de 2000€', '2000€ - 4000€', '4000€ - 6000€', 'Plus de 6000€'];
   const sizes = ['All', ...new Set(dressesData.flatMap(d => d.sizes))].sort();
+
+  // Dynamic page title based on collection
+  useEffect(() => {
+    const colParam = searchParams.get('collection');
+    if (colParam) {
+      document.title = `${colParam} | Kelly Dress`;
+    } else {
+      document.title = 'Catalogue | Kelly Dress';
+    }
+  }, [searchParams]);
 
   // Read collection from URL query params (e.g. ?collection=Couture)
   useEffect(() => {
@@ -191,8 +202,9 @@ function CatalogContent() {
       <section className="catalog-hero section-padding">
         <div className="container">
           <span className="section-subtitle">{t('catalog.title')}</span>
-          <h1 className="section-title">{t('catalog.title')}</h1>
+          <h1 className="section-title">{selectedCollection !== 'All' ? selectedCollection : t('catalog.title')}</h1>
           <p className="catalog-intro">{t('hero.cta')}</p>
+          <p className="catalog-intro-sub">Découvrez notre collection de robes de mariée d'exception, chacune conçue pour révéler la beauté et la personnalité de chaque future mariée. Parcourez notre sélection de créations haute couture, des silhouettes princesse aux lignes sirène épurées, en passant par des modèles bohèmes et contemporains. Chaque robe raconte une histoire d'amour et d'élégance intemporelle, façonnée par des artisans d'exception dans notre atelier parisien.</p>
         </div>
       </section>
 
@@ -1263,6 +1275,7 @@ function CatalogContent() {
 }
 
 export default function Catalog() {
+
   return (
     <Suspense fallback={
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', fontFamily: 'var(--font-sans)', fontSize: '0.85rem', letterSpacing: '0.15em', color: 'var(--color-gold)' }} role="status">

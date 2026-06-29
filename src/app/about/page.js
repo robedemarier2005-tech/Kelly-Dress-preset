@@ -1,9 +1,10 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from '../../context/LanguageContext';
 
 export default function About() {
   const { t } = useTranslation();
+  useEffect(() => { document.title = 'À Propos | Kelly Dress'; }, []);
   return (
     <div className="about-wrapper">
       <section className="about-hero section-padding">
@@ -20,10 +21,14 @@ export default function About() {
             <div className="about-block">
               <h3>{t('about.heritage')}</h3>
               <p>{t('about.heritageDesc')}</p>
+              <p>Notre Maison puise son inspiration dans les archives des grandes maisons de couture françaises, réinterprétant les silhouettes iconiques avec une sensibilité résolument moderne. Chaque création raconte une histoire, celle d'un savoir-faire transmis de génération en génération, où la main de l'artisan reste au cœur du processus créatif.</p>
+              <p>De la première esquisse à la dernière retouche, chaque robe Kelly Dress est le résultat d'un dialogue intime entre la mariée et notre atelier. Nous croyons en une mode qui célèbre l'individualité, où chaque détail — du choix du tissu à la coupe finale — est pensé pour révéler la beauté unique de celle qui la portera.</p>
             </div>
             <div className="about-block">
               <h3>{t('about.metiers')}</h3>
               <p>{t('about.metiersDesc')}</p>
+              <p>Nos artisans d'art maîtrisent des techniques séculaires : la couture main, le plissé soleil, la broderie perlée, la dentelle à l'aiguille. Chaque point est exécuté avec une précision millimétrique, chaque couture renforcée pour traverser le temps. C'est cette exigence de perfection qui distingue la haute couture de la confection industrielle.</p>
+              <p>Notre atelier parisien réunit des talents rares : modélistes, tailleurs, brodeurs et fleuristes. Ensemble, ils donnent vie à des créations uniques, où la technique rencontre l'émotion. Chaque robe est un objet d'art vivant, porteur d'une histoire d'amour et d'un rêve d'éternité.</p>
             </div>
           </div>
         </div>
