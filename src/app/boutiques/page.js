@@ -11,8 +11,8 @@ const boutiquesList = [
     city: 'Paris',
     country: 'France',
     address: '18 Rue du Faubourg Saint-Honoré, 75008 Paris',
-    phone: '+33 (0)1 42 68 53 00',
-    email: 'paris@kellydress.com',
+    phone: '0626751311',
+    email: 'kellydressweeding@gmail.com',
     hours: 'Lundi — Samedi : 10h00 - 19h00 (Sur RDV)',
     coordinates: { x: 45, y: 40 }
   },
@@ -24,7 +24,7 @@ const boutiquesList = [
     country: 'Suisse',
     address: '42 Rue du Rhône, 1204 Genève',
     phone: '+41 (0)22 310 44 00',
-    email: 'geneve@kellydress.com',
+    email: 'kellydressweeding@gmail.com',
     hours: 'Mardi — Samedi : 10h00 - 18h30 (Sur RDV)',
     coordinates: { x: 55, y: 55 }
   },
@@ -36,7 +36,7 @@ const boutiquesList = [
     country: 'France',
     address: '12 Place Bellecour, 69002 Lyon',
     phone: '+33 (0)4 72 40 12 00',
-    email: 'lyon@kellydress.com',
+    email: 'kellydressweeding@gmail.com',
     hours: 'Mardi — Samedi : 10h00 - 19h00 (Sur RDV)',
     coordinates: { x: 48, y: 65 }
   },
@@ -48,7 +48,7 @@ const boutiquesList = [
     country: 'Royaume-Uni',
     address: '88 New Bond Street, London W1S 1SJ',
     phone: '+44 (0)20 7493 0000',
-    email: 'retailers@kellydress.com',
+    email: 'kellydressweeding@gmail.com',
     hours: 'Lundi — Samedi : 10h00 - 18h00',
     coordinates: { x: 38, y: 25 }
   },
@@ -60,7 +60,7 @@ const boutiquesList = [
     country: 'Italie',
     address: 'Via Montenapoleone 14, 20121 Milano',
     phone: '+39 02 7600 0000',
-    email: 'retailers@kellydress.com',
+    email: 'kellydressweeding@gmail.com',
     hours: 'Lundi — Samedi : 10h00 - 19h00',
     coordinates: { x: 65, y: 62 }
   }

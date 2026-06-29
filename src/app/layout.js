@@ -15,6 +15,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://www.kellydress.co"),
   title: "Kelly Dress",
   description: "Maison de haute couture parisienne créant des robes de mariée de luxe sur mesure. L'élégance et l'excellence artisanale pour votre jour unique.",
   icons: {
@@ -23,13 +24,13 @@ export const metadata = {
   openGraph: {
     title: "Kelly Dress",
     description: "Maison de haute couture parisienne créant des robes de mariée de luxe sur mesure.",
-    url: "https://kellydress.com",
+    url: "https://www.kellydress.co",
     siteName: "Kelly Dress",
     locale: "fr_FR",
     type: "website",
     images: [
       {
-        url: "/images/preview.png",
+        url: "/images/image.png",
         width: 1200,
         height: 630,
         alt: "Kelly Dress - Haute Couture Parisienne",
@@ -40,7 +41,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Kelly Dress",
     description: "Maison de haute couture parisienne créant des robes de mariée de luxe sur mesure.",
-    images: ["/images/preview.png"],
+    images: ["/images/image.png"],
   },
   robots: "index, follow",
 };

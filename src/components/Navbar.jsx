@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Heart, Menu, X, ChevronDown, ShoppingBag, Globe } from 'lucide-react';
 import { useWishlist } from '../context/WishlistContext';
@@ -111,7 +112,7 @@ const Navbar = () => {
 
                   <div className="mega-menu-column featured-collection">
                     <div className="featured-card">
-                      <img src="https://i.ibb.co/FkFWZzJj/980c30a1-fd3b-451c-b724-6e03eb444e2e.png" alt="Featured Collection" />
+                      <Image src="https://i.ibb.co/FkFWZzJj/980c30a1-fd3b-451c-b724-6e03eb444e2e.png" alt="Featured Collection" fill sizes="300px" />
                       <div className="featured-overlay">
                         <span>{t('nav.nouvelleEre')}</span>
                         <h3>{t('nav.collection2026')}</h3>
@@ -157,7 +158,7 @@ const Navbar = () => {
 
         {/* Center: Brand Logo */}
         <Link href="/" className="navbar-logo" onClick={handleLinkClick}>
-          <img src="/images/logo.jpg" alt="Kelly Dress" className="logo-image" />
+          <Image src="/images/image.png" alt="Kelly Dress" width={200} height={80} className="logo-image" />
         </Link>
 
         {/* Right Side: Links & Actions */}
@@ -312,6 +313,8 @@ const Navbar = () => {
           color: var(--color-white);
           cursor: pointer;
           padding: 5px;
+          width: 30px;
+          height: 30px;
           transition: var(--transition-fast);
         }
 
@@ -380,11 +383,9 @@ const Navbar = () => {
           justify-content: center;
         }
 
-        .logo-image {
-          height: 45px;
-          width: auto;
-          object-fit: contain;
-          display: block;
+        .navbar-logo {
+          display: flex;
+          align-items: center;
         }
 
         .navbar-actions {
@@ -588,14 +589,12 @@ const Navbar = () => {
           overflow: hidden;
         }
 
-        .featured-card img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .featured-card :global(img) {
+          object-fit: cover !important;
           transition: var(--transition-slow);
         }
 
-        .featured-card:hover img {
+        .featured-card:hover :global(img) {
           transform: scale(1.05);
         }
 

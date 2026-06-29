@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowDown, ArrowRight } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 
@@ -56,7 +57,7 @@ export default function Home() {
               key={i}
               className={`hero-slide ${activeSlide === i ? 'active' : ''}`}
             >
-              <img src={src} alt="" />
+              <Image src={src} alt="" fill sizes="100vw" priority={i === 0} />
             </div>
           ))}
           <div className="hero-overlay"></div>
@@ -66,9 +67,10 @@ export default function Home() {
           {sliderImages.map((_, i) => (
             <button
               key={i}
-              className={`hero-dot ${activeSlide === i ? 'active' : ''}`}
-              onClick={() => setActiveSlide(i)}
-            />
+                className={`hero-dot ${activeSlide === i ? 'active' : ''}`}
+                onClick={() => setActiveSlide(i)}
+                aria-label={`Slide ${i + 1}`}
+              />
           ))}
         </div>
 
@@ -127,7 +129,7 @@ export default function Home() {
           </div>
           <div className="maison-image-container animate-fade-in">
             <div className="maison-img-frame">
-              <img src="https://i.ibb.co/VpT8RnwP/cccc.png" alt="Atelier Couture" className="maison-img" />
+              <Image src="https://i.ibb.co/VpT8RnwP/cccc.png" alt="Atelier Couture" fill sizes="(max-width: 768px) 100vw, 50vw" className="maison-img" />
             </div>
           </div>
         </div>
@@ -152,8 +154,8 @@ export default function Home() {
                 className="featured-card animate-fade-in"
                 ref={el => collectionRefs.current[index] = el}
               >
-                <Link href="/catalog" className="featured-img-wrapper">
-                  <img src={img.src} alt="" />
+                <Link href="/catalog" className="featured-img-wrapper" aria-label="Voir toutes les robes">
+                  <Image src={img.src} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" />
                 </Link>
               </div>
             ))}
@@ -181,13 +183,14 @@ export default function Home() {
 
         @media (max-width: 768px) {
           .hero-section {
-            height: 100vh;
+            height: 650px;
             min-height: 650px;
           }
         }
 
         @media (max-width: 480px) {
           .hero-section {
+            height: 550px;
             min-height: 550px;
           }
         }
@@ -209,6 +212,7 @@ export default function Home() {
           width: 100%;
           height: 100%;
           opacity: 0;
+          background-color: #1a1a1a;
           transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -216,15 +220,13 @@ export default function Home() {
           opacity: 1;
         }
 
-        .hero-slide img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .hero-slide :global(img) {
+          object-fit: cover !important;
           transform: scale(1.03);
           animation: heroZoom 8s ease-out forwards;
         }
 
-        .hero-slide.active img {
+        .hero-slide.active :global(img) {
           animation: heroZoom 8s ease-out forwards;
         }
 
@@ -389,17 +391,12 @@ export default function Home() {
           overflow: hidden;
         }
 
-        .maison-img {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+        .maison-img-frame :global(img) {
+          object-fit: cover !important;
           transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .maison-img-frame:hover .maison-img {
+        .maison-img-frame:hover :global(img) {
           transform: scale(1.05);
         }
 
@@ -466,11 +463,9 @@ export default function Home() {
           padding: 8px;
         }
 
-        .featured-img-wrapper img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          object-position: center;
+        .featured-img-wrapper :global(img) {
+          object-fit: contain !important;
+          object-position: center !important;
         }
 
         .featured-footer {

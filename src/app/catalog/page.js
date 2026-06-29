@@ -5,7 +5,6 @@ import { useSearchParams } from 'next/navigation';
 import { Heart, SlidersHorizontal, X, Search, ChevronDown, ChevronUp } from 'lucide-react';
 import { useWishlist } from '../../context/WishlistContext';
 import { useTranslation } from '../../context/LanguageContext';
-import { useEffect } from 'react';
 
 function CatalogContent() {
   const { t } = useTranslation();

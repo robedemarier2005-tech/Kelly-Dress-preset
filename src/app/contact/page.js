@@ -67,7 +67,7 @@ export default function Contact() {
               <Phone size={18} />
               <div>
                 <h4>{t('contact.telephone')}</h4>
-                <p>+33 (0)1 42 68 53 00</p>
+                <p>0626751311</p>
               </div>
             </div>
 
@@ -75,7 +75,7 @@ export default function Contact() {
               <Mail size={18} />
               <div>
                 <h4>{t('contact.relations')}</h4>
-                <p>atelier@kellydress.com</p>
+                <p>kellydressweeding@gmail.com</p>
               </div>
             </div>
 

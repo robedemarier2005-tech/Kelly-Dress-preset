@@ -41,7 +41,7 @@ export default function PolitiqueConfidentialite() {
             <h2>5. Vos droits</h2>
             <p>Conformément au Règlement Général sur la Protection des Données (RGPD) 2016/679 et à la loi Informatique et Libertés, vous disposez des droits suivants sur vos données personnelles :</p>
             <p>Droit d'accès : obtenir une copie des données que nous détenons. Droit de rectification : faire corriger des informations inexactes ou incomplètes. Droit à l'effacement (droit à l'oubli) : demander la suppression de vos données. Droit à la limitation du traitement : restreindre l'utilisation de vos données. Droit d'opposition : vous opposer au traitement de vos données. Droit à la portabilité : récupérer vos données dans un format réutilisable. Droit de retirer votre consentement à tout moment.</p>
-            <p>Pour exercer ces droits, contactez-nous à l'adresse email contact@kellydress.com ou par courrier postal. Nous nous engageons à répondre à votre demande dans un délai maximum de 30 jours, et à vous fournir les informations demandées gratuitement, sauf en cas de demandes abusives ou excessives.</p>
+            <p>Pour exercer ces droits, contactez-nous à l'adresse email kellydressweeding@gmail.com ou par courrier postal. Nous nous engageons à répondre à votre demande dans un délai maximum de 30 jours, et à vous fournir les informations demandées gratuitement, sauf en cas de demandes abusives ou excessives.</p>
           </section>
 
           <section>
@@ -61,7 +61,7 @@ export default function PolitiqueConfidentialite() {
           <section>
             <h2>8. Contact et réclamations</h2>
             <p>Pour toute question relative à notre Politique de Confidentialité ou pour exercer vos droits, vous pouvez nous contacter :</p>
-            <p>Par email : contact@kellydress.com. Par courrier : [Adresse du siège social].</p>
+            <p>Par email : kellydressweeding@gmail.com. Par courrier : [Adresse du siège social].</p>
             <p>Si vous estimez que le traitement de vos données n'est pas conforme à la réglementation, vous avez le droit d'introduire une réclamation auprès de la Commission Nationale de l'Informatique et des Libertés (CNIL), autorité de contrôle compétente en France.</p>
           </section>
         </div>
