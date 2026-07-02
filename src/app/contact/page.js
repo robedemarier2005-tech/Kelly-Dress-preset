@@ -22,23 +22,6 @@ const Instagram = ({ size = 24, className }) => (
   </svg>
 );
 
-const Facebook = ({ size = 24, className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-  </svg>
-);
-
 export default function Contact() {
   const { t } = useTranslation();
   useEffect(() => { document.title = 'Contact | Kelly Dress'; }, []);
@@ -75,51 +58,62 @@ export default function Contact() {
               <Mail size={18} />
               <div>
                 <h4>{t('contact.relations')}</h4>
-                <p>kellydressweeding@gmail.com</p>
+                <p>support@kellydress.co</p>
               </div>
             </div>
 
             <div className="social-links-row">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><Instagram size={20} /></a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><Facebook size={20} /></a>
+              <a href="https://www.instagram.com/kellydress2/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={20} /></a>
             </div>
           </div>
 
           {/* Form Column */}
           <div className="form-column">
-            <div className="luxury-contact-form disabled-form">
+            <form className="luxury-contact-form" onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target);
+              const subject = encodeURIComponent(`Contact depuis Kelly Dress - ${formData.get('name')}`);
+              const body = encodeURIComponent(
+                `Nom: ${formData.get('name')}\n` +
+                `Email: ${formData.get('email')}\n` +
+                `Téléphone: ${formData.get('phone')}\n` +
+                `Date de mariage: ${formData.get('weddingDate')}\n\n` +
+                `Message:\n${formData.get('message')}`
+              );
+              window.location.href = `mailto:support@kellydress.co?subject=${subject}&body=${body}`;
+            }}>
                 <h3>{t('contact.envoyerMessage')}</h3>
 
                 <div className="form-group">
                   <label className="form-label">{t('contact.nomComplet')}</label>
-                  <input type="text" className="form-input" disabled />
+                  <input type="text" name="name" className="form-input" required />
                 </div>
 
                 <div className="form-row-split">
                   <div className="form-group flex-1">
                     <label className="form-label">{t('contact.email')}</label>
-                    <input type="email" className="form-input" disabled />
+                    <input type="email" name="email" className="form-input" required />
                   </div>
                   <div className="form-group flex-1">
                     <label className="form-label">{t('contact.telephoneLabel')}</label>
-                    <input type="tel" className="form-input" disabled />
+                    <input type="tel" name="phone" className="form-input" />
                   </div>
                 </div>
 
                 <div className="form-group">
                   <label className="form-label">{t('contact.dateMariage')}</label>
-                  <input type="date" className="form-input" disabled />
+                  <input type="date" name="weddingDate" className="form-input" />
                 </div>
 
                 <div className="form-group">
                   <label className="form-label">{t('contact.message')}</label>
-                  <textarea className="form-textarea" rows="5" disabled></textarea>
+                  <textarea name="message" className="form-textarea" rows="5" required></textarea>
                 </div>
 
-                <button type="button" className="btn-gold btn-send-message disabled-btn" disabled>
-                  Bientôt...
+                <button type="submit" className="btn-gold btn-send-message">
+                  {t('contact.envoyer')}
                 </button>
-              </div>
+              </form>
           </div>
         </div>
       </section>
@@ -244,24 +238,6 @@ export default function Contact() {
           flex: 1;
         }
 
-        .disabled-form input,
-        .disabled-form textarea {
-          opacity: 0.5;
-          cursor: not-allowed;
-        }
-
-        .disabled-btn {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          margin-top: 20px;
-          opacity: 0.5;
-          cursor: not-allowed;
-          background-color: #888 !important;
-          border-color: #888 !important;
-        }
 
         .btn-send-message {
           width: 100%;

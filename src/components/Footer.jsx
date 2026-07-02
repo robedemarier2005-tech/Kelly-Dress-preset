@@ -88,10 +88,12 @@ const Footer = () => {
 
           </div>
 
-          {/* Column 4: Instagram Coming Soon */}
+          {/* Column 4: Instagram */}
           <div className="footer-col instagram-col">
             <h3>{t('footer.instagramTitle')}</h3>
-            <p className="instagram-coming-soon">{t('footer.instagramComingSoon')}</p>
+            <a href="https://www.instagram.com/kellydress2/" target="_blank" rel="noopener noreferrer" className="instagram-link">
+              {t('footer.instagram')}
+            </a>
           </div>
         </div>
 
@@ -223,6 +225,17 @@ const Footer = () => {
           color: var(--color-gray-medium);
           line-height: 1.6;
           font-style: italic;
+        }
+
+        .instagram-link {
+          font-size: 0.85rem;
+          color: var(--color-gold);
+          text-decoration: none;
+          transition: var(--transition-fast);
+        }
+
+        .instagram-link:hover {
+          color: var(--color-white);
         }
 
         .instagram-grid {

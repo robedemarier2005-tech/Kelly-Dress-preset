@@ -13,15 +13,8 @@ export default function MentionsLegales() {
           <section>
             <h2>Éditeur du site</h2>
             <p>Le site Kelly Dress est édité par la société Kelly Dress, maison de haute couture parisienne spécialisée dans la création de robes de mariée sur mesure.</p>
-            <p>Raison sociale : Kelly Dress</p>
-            <p>Forme juridique : Société à responsabilité limitée (SARL)</p>
-            <p>Capital social : [Capital social]</p>
-            <p>RCS : [Numéro RCS]</p>
-            <p>Numéro de TVA intracommunautaire : [TVA]</p>
-            <p>Siège social : [Adresse du siège social]</p>
-            <p>Email : kellydressweeding@gmail.com</p>
-            <p>Téléphone : [Téléphone]</p>
-            <p>Directeur de la publication : [Nom du directeur]</p>
+            <p>Email : support@kellydress.co</p>
+            <p>Téléphone : 06 26 75 13 11</p>
           </section>
 
           <section>
@@ -45,7 +38,7 @@ export default function MentionsLegales() {
             <h2>Données personnelles</h2>
             <p>Les données personnelles collectées sur le site Kelly Dress (nom, adresse email, adresse postale, numéro de téléphone, informations de paiement) sont utilisées exclusivement dans le cadre de la gestion des commandes, de la relation client et de l'amélioration de nos services.</p>
             <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données personnelles. Vous pouvez également vous opposer au traitement de vos données ou en demander la limitation.</p>
-            <p>Pour exercer ces droits, veuillez nous contacter par email à l'adresse kellydressweeding@gmail.com ou par courrier postal à l'adresse de notre siège social. Nous nous engageons à répondre à votre demande dans un délai maximum de 30 jours.</p>
+            <p>Pour exercer ces droits, veuillez nous contacter par email à l'adresse support@kellydress.co ou par courrier postal à l'adresse de notre siège social. Nous nous engageons à répondre à votre demande dans un délai maximum de 30 jours.</p>
             <p>Vos données ne sont jamais cédées à des tiers à des fins commerciales. Elles peuvent être communiquées aux prestataires techniques nécessaires au traitement de votre commande (transporteurs, prestataires de paiement) dans le strict cadre de leur mission.</p>
           </section>
 

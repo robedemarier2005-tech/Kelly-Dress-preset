@@ -50,7 +50,7 @@ export default function CGU() {
           <section>
             <h2>7. Données personnelles</h2>
             <p>Les données personnelles collectées sur le Site sont traitées dans le respect de notre Politique de Confidentialité et conformément au Règlement Général sur la Protection des Données (RGPD) 2016/679 du Parlement européen. Vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données.</p>
-            <p>Pour exercer ces droits, veuillez nous contacter à l'adresse email kellydressweeding@gmail.com. Nous nous engageons à traiter votre demande dans un délai maximal de 30 jours.</p>
+            <p>Pour exercer ces droits, veuillez nous contacter à l'adresse email support@kellydress.co. Nous nous engageons à traiter votre demande dans un délai maximal de 30 jours.</p>
           </section>
 
           <section>
