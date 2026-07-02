@@ -19,7 +19,7 @@ export const metadata = {
   title: "Kelly Dress",
   description: "Maison de haute couture parisienne créant des robes de mariée de luxe sur mesure. L'élégance et l'excellence artisanale pour votre jour unique.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon-32x32.png",
   },
   openGraph: {
     title: "Kelly Dress",
