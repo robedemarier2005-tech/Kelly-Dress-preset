@@ -1,6 +1,8 @@
 import { Cormorant_Infant, Montserrat } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
+import CopyProtection from "../components/CopyProtection";
+import StyledJsxRegistry from "./registry";
 
 const cormorantInfant = Cormorant_Infant({
   subsets: ["latin"],
@@ -50,9 +52,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${cormorantInfant.variable} ${montserrat.variable}`}>
       <body>
+        <CopyProtection />
+        <StyledJsxRegistry>
         <Providers>
           {children}
         </Providers>
+        </StyledJsxRegistry>
       </body>
     </html>
   );

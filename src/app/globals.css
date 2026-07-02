@@ -22,7 +22,7 @@
   --font-sans: var(--font-sans), 'Montserrat', sans-serif;
 
   /* Header heights */
-  --navbar-height: 80px;
+  --navbar-height: 95px;
 
   /* Transitions */
   --transition-slow: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
@@ -59,6 +59,33 @@ body {
 ::selection {
   background-color: var(--color-gold);
   color: var(--color-white);
+}
+
+/* =========================================
+   Copy Protection — Block selection & drag
+   ========================================= */
+
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+img, video, svg {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+a, button {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Scrollbar */

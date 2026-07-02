@@ -52,7 +52,7 @@ const Navbar = () => {
   const isHome = pathname === '/';
 
   return (
-    <header className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''} ${!isHome ? 'always-solid' : ''}`}>
+    <header className={`navbar-wrapper ${isHome ? 'home' : ''} ${isScrolled ? 'scrolled' : ''} ${isMegaMenuOpen ? 'mega-open' : ''}`}>
       <div className="navbar-container">
         {/* Left Side: Burger Menu (Mobile Only) */}
           <button 
@@ -62,7 +62,6 @@ const Navbar = () => {
           >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-
         {/* Center/Left: Navigation Links (Desktop Only) */}
         <nav className="navbar-links">
           <Link 
@@ -83,20 +82,19 @@ const Navbar = () => {
               megaMenuTimer.current = setTimeout(() => setIsMegaMenuOpen(false), 300);
             }}
           >
-            {/* Click triggers toggle for mobile/tablet/touch screens, hover works on desktop */}
             <button 
               className="nav-item-trigger nav-item-trigger-btn"
               onClick={toggleMegaMenuClick}
             >
-              {t('nav.collections')} <ChevronDown size={12} className="chevron" />
+              {t('nav.collections')} <ChevronDown size={14} className="chevron" />
             </button>
 
-            {/* Mega Menu */}
             <div className={`mega-menu ${isMegaMenuOpen ? 'open' : ''}`}>
               <div className="mega-menu-content">
                 <div className="mega-menu-grid">
-                  <div className="mega-menu-column collections-list">
+                  <div className="mega-menu-column collections-list menu-animate" style={{ animationDelay: '0ms' }}>
                     <h4>{t('nav.nosCollections')}</h4>
+                    <p className="collections-intro">Explorez nos univers d'exception, chacune de nos collections raconte une histoire unique.</p>
                     <ul>
                       {activeCollections.map((col) => (
                         <li key={col.id}>
@@ -111,29 +109,43 @@ const Navbar = () => {
                     </ul>
                   </div>
 
-                  <div className="mega-menu-column featured-collection">
+                  <div className="mega-menu-column featured-collection menu-animate" style={{ animationDelay: '100ms' }}>
                     <div className="featured-card">
                       <Image src="https://i.ibb.co/FkFWZzJj/980c30a1-fd3b-451c-b724-6e03eb444e2e.png" alt="Featured Collection" fill sizes="300px" />
                       <div className="featured-overlay">
-                        <span>{t('nav.nouvelleEre')}</span>
-                        <h3>{t('nav.collection2026')}</h3>
+                        <span className="featured-badge">{t('nav.nouvelleEre')}</span>
+                        <h3 className="featured-title">{t('nav.collection2026')}</h3>
                         <Link 
                           href="/catalog?collection=Collection%202026"
                           className="featured-btn"
                           onClick={handleLinkClick}
                         >
-                          {t('nav.decouvrir')}
+                          Explorer la collection <span className="btn-arrow">→</span>
                         </Link>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mega-menu-column details-column">
+                  <div className="mega-menu-column details-column menu-animate" style={{ animationDelay: '200ms' }}>
                     <h4>{t('nav.experienceAtelier')}</h4>
-                    <p>{t('nav.descAtelier')}</p>
+                    <p className="details-text">{t('nav.descAtelier')}</p>
                     <Link href="/catalog" className="btn-book-nav" onClick={handleLinkClick}>
                       {t('nav.decouvrirBoutique')}
                     </Link>
+                    <div className="reassurance-list">
+                      <div className="reassurance-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        <span>Fabrication artisanale</span>
+                      </div>
+                      <div className="reassurance-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                        <span>Sur mesure</span>
+                      </div>
+                      <div className="reassurance-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        <span>Livraison sécurisée</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -184,7 +196,7 @@ const Navbar = () => {
             }}
           >
             <button className="navbar-action-btn lang-btn" onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}>
-              <Globe size={16} />
+              <Globe size={18} />
               <span className="lang-current">{lang.toUpperCase()}</span>
             </button>
             <div className={`lang-dropdown ${isLangMenuOpen ? 'open' : ''}`}>
@@ -267,35 +279,77 @@ const Navbar = () => {
           height: var(--navbar-height);
           z-index: 1000;
           background-color: transparent;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          transition: var(--transition-medium);
+          border-bottom: 1px solid rgba(255,255,255,0.03);
+          transition: background-color 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.6s ease, box-shadow 0.6s ease, backdrop-filter 0.6s ease;
+          animation: navbarSlideIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        .navbar-wrapper.scrolled {
-          background-color: var(--color-white-overlay);
+        @keyframes navbarSlideIn {
+          from { opacity: 0; transform: translateY(-100%); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .navbar-wrapper.home {
+          background-color: rgba(255,255,255,0.08);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid var(--color-beige-light);
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+          border-bottom: 1px solid rgba(255,255,255,0.15);
         }
 
-        .navbar-wrapper.always-solid {
+        .navbar-wrapper:not(.home) {
           background-color: var(--color-white);
           border-bottom: 1px solid var(--color-beige-light);
+          box-shadow: 0 2px 20px rgba(0,0,0,0.025);
+        }
+
+        .navbar-wrapper:not(.home) .nav-item,
+        .navbar-wrapper:not(.home) .nav-item-trigger,
+        .navbar-wrapper:not(.home) .navbar-burger,
+        .navbar-wrapper:not(.home) .navbar-action-btn,
+        .navbar-wrapper:not(.home) .logo-text,
+        .navbar-wrapper:not(.home) .lang-current {
+          color: var(--color-black);
+        }
+
+        .navbar-wrapper:not(.scrolled):not(.mega-open):not(.home) .nav-item,
+        .navbar-wrapper:not(.scrolled):not(.mega-open):not(.home) .nav-item-trigger,
+        .navbar-wrapper:not(.scrolled):not(.mega-open):not(.home) .navbar-burger,
+        .navbar-wrapper:not(.scrolled):not(.mega-open):not(.home) .navbar-action-btn,
+        .navbar-wrapper:not(.scrolled):not(.mega-open):not(.home) .logo-text,
+        .navbar-wrapper:not(.scrolled):not(.mega-open):not(.home) .lang-current {
+          color: var(--color-black);
+        }
+
+        .navbar-wrapper:not(.scrolled):not(.mega-open) .nav-item,
+        .navbar-wrapper:not(.scrolled):not(.mega-open) .nav-item-trigger,
+        .navbar-wrapper:not(.scrolled):not(.mega-open) .navbar-burger,
+        .navbar-wrapper:not(.scrolled):not(.mega-open) .navbar-action-btn,
+        .navbar-wrapper:not(.scrolled):not(.mega-open) .logo-text,
+        .navbar-wrapper:not(.scrolled):not(.mega-open) .lang-current {
+          color: var(--color-white);
+        }
+
+        .navbar-wrapper.scrolled,
+        .navbar-wrapper.mega-open {
+          background-color: rgba(255,255,255,0.10);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+          box-shadow: 0 1px 12px rgba(0,0,0,0.04);
         }
 
         .navbar-wrapper.scrolled .nav-item,
-        .navbar-wrapper.always-solid .nav-item,
         .navbar-wrapper.scrolled .nav-item-trigger,
-        .navbar-wrapper.always-solid .nav-item-trigger,
-        .navbar-wrapper.scrolled .nav-item-trigger-btn,
-        .navbar-wrapper.always-solid .nav-item-trigger-btn,
         .navbar-wrapper.scrolled .navbar-burger,
-        .navbar-wrapper.always-solid .navbar-burger,
         .navbar-wrapper.scrolled .navbar-action-btn,
-        .navbar-wrapper.always-solid .navbar-action-btn,
         .navbar-wrapper.scrolled .logo-text,
-        .navbar-wrapper.always-solid .logo-text {
+        .navbar-wrapper.scrolled .lang-current,
+        .navbar-wrapper.mega-open .nav-item,
+        .navbar-wrapper.mega-open .nav-item-trigger,
+        .navbar-wrapper.mega-open .navbar-burger,
+        .navbar-wrapper.mega-open .navbar-action-btn,
+        .navbar-wrapper.mega-open .logo-text,
+        .navbar-wrapper.mega-open .lang-current {
           color: var(--color-black);
         }
 
@@ -303,9 +357,9 @@ const Navbar = () => {
           max-width: 1500px;
           margin: 0 auto;
           height: 100%;
-          display: flex;
+          display: grid;
+          grid-template-columns: 1fr auto 1fr;
           align-items: center;
-          justify-content: space-between;
           padding: 0 40px;
         }
 
@@ -313,36 +367,34 @@ const Navbar = () => {
           display: none;
           background: none;
           border: none;
-          color: var(--color-white);
           cursor: pointer;
           padding: 5px;
           width: 30px;
           height: 30px;
-          transition: var(--transition-fast);
+          transition: opacity 0.3s ease;
         }
 
         .navbar-links {
           display: flex;
           align-items: center;
-          gap: 30px;
-          flex: 1;
+          gap: 60px;
+          justify-content: flex-start;
         }
 
         .nav-item, .nav-item-trigger {
           background: none;
           border: none;
-          color: var(--color-white);
-          font-size: 0.72rem;
+          font-size: 0.68rem;
           font-weight: 400;
           text-transform: uppercase;
-          letter-spacing: 0.2em;
+          letter-spacing: 0.28em;
           cursor: pointer;
-          padding: 10px 0;
+          padding: 4px 0;
           position: relative;
           display: flex;
           align-items: center;
           gap: 6px;
-          transition: var(--transition-fast);
+          transition: opacity 0.25s ease;
         }
 
         .nav-item-trigger-btn {
@@ -357,68 +409,74 @@ const Navbar = () => {
         .nav-item::after {
           content: '';
           position: absolute;
-          bottom: 0;
+          bottom: -1px;
           left: 0;
           width: 100%;
           height: 1px;
-          background-color: var(--color-gold);
+          background-color: rgba(0,0,0,0.15);
           transform: scaleX(0);
           transform-origin: right;
-          transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+          transition: transform 0.3s ease;
         }
 
-        .nav-item:hover::after, .nav-item.active::after {
+        .nav-item:hover::after,
+        .nav-item.active::after {
           transform: scaleX(1);
           transform-origin: left;
         }
 
-        .nav-item:hover, .nav-item-trigger:hover {
-          color: var(--color-gold) !important;
+        .nav-item:hover,
+        .nav-item-trigger:hover {
+          opacity: 0.6;
         }
 
         .navbar-logo {
           cursor: pointer;
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
           display: flex;
           align-items: center;
           justify-content: center;
           text-decoration: none;
+          height: 100%;
         }
 
         .logo-text {
           font-family: var(--font-serif);
-          font-size: 1.6rem;
+          font-size: 2.03rem;
+          font-weight: 400;
           font-style: italic;
-          color: var(--color-white);
           letter-spacing: 0.08em;
           white-space: nowrap;
+          transition: opacity 0.25s ease;
+          display: flex;
+          align-items: center;
+          color: rgba(255,255,255,0.95);
+        }
+
+        .navbar-logo:hover .logo-text {
+          opacity: 0.7;
         }
 
         .navbar-actions {
           display: flex;
           align-items: center;
-          gap: 30px;
-          flex: 1;
+          gap: 32px;
           justify-content: flex-end;
         }
 
         .navbar-action-btn {
           background: none;
           border: none;
-          color: var(--color-white);
           cursor: pointer;
           position: relative;
-          padding: 5px;
-          transition: var(--transition-fast);
+          padding: 4px;
+          transition: opacity 0.25s ease;
           display: flex;
           align-items: center;
           justify-content: center;
         }
 
         .navbar-action-btn:hover {
-          color: var(--color-gold) !important;
+          opacity: 0.6;
         }
 
         /* Language Switcher */
@@ -560,6 +618,15 @@ const Navbar = () => {
           gap: 60px;
         }
 
+        /* ---- Column animations ---- */
+        @keyframes menuFadeUp {
+          from { opacity: 0; transform: translateY(18px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .menu-animate {
+          animation: menuFadeUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) both;
+        }
+
         .mega-menu-column h4 {
           font-size: 0.8rem;
           text-transform: uppercase;
@@ -569,17 +636,25 @@ const Navbar = () => {
           font-weight: 500;
         }
 
+        /* ---- Left column : collections ---- */
+        .collections-intro {
+          font-size: 0.8rem;
+          color: var(--color-gray-medium);
+          line-height: 1.7;
+          margin-bottom: 30px;
+        }
+
         .collections-list ul {
           list-style: none;
         }
 
         .collections-list li {
-          margin-bottom: 15px;
+          margin-bottom: 18px;
         }
 
         .collections-list a {
           font-family: var(--font-serif);
-          font-size: 1.4rem;
+          font-size: 1.35rem;
           color: var(--color-black);
           cursor: pointer;
           transition: var(--transition-fast);
@@ -591,19 +666,27 @@ const Navbar = () => {
           transform: translateX(5px);
         }
 
+        /* ---- Center column : featured card ---- */
         .featured-card {
           position: relative;
-          height: 250px;
+          height: 280px;
           overflow: hidden;
+          border-radius: 14px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+          transition: box-shadow 0.25s ease, transform 0.25s ease;
         }
 
         .featured-card :global(img) {
           object-fit: cover !important;
-          transition: var(--transition-slow);
+          transition: transform 0.25s ease;
+        }
+
+        .featured-card:hover {
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
         }
 
         .featured-card:hover :global(img) {
-          transform: scale(1.05);
+          transform: scale(1.03);
         }
 
         .featured-overlay {
@@ -612,7 +695,7 @@ const Navbar = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 100%);
+          background: linear-gradient(0deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.05) 100%);
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -620,17 +703,20 @@ const Navbar = () => {
           color: var(--color-white);
         }
 
-        .featured-overlay span {
+        .featured-badge {
           font-size: 0.65rem;
+          font-family: var(--font-sans);
           text-transform: uppercase;
           letter-spacing: 0.3em;
           color: var(--color-gold);
-          margin-bottom: 5px;
+          margin-bottom: 6px;
         }
 
-        .featured-overlay h3 {
+        .featured-title {
+          font-family: var(--font-serif);
           font-size: 1.8rem;
-          margin-bottom: 15px;
+          font-weight: 400;
+          margin-bottom: 20px;
         }
 
         .featured-btn {
@@ -638,13 +724,22 @@ const Navbar = () => {
           background: transparent;
           border: none;
           color: var(--color-white);
-          font-size: 0.7rem;
+          font-size: 0.72rem;
+          font-family: var(--font-sans);
           text-transform: uppercase;
-          letter-spacing: 0.2em;
+          letter-spacing: 0.22em;
           border-bottom: 1px solid var(--color-white);
           padding-bottom: 3px;
           cursor: pointer;
           transition: var(--transition-fast);
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .btn-arrow {
+          display: inline-block;
+          transition: transform 0.25s ease;
         }
 
         .featured-btn:hover {
@@ -652,11 +747,16 @@ const Navbar = () => {
           border-bottom: 1px solid var(--color-gold);
         }
 
-        .details-column p {
+        .featured-btn:hover .btn-arrow {
+          transform: translateX(4px);
+        }
+
+        /* ---- Right column : details + reassurance ---- */
+        .details-text {
           font-size: 0.85rem;
           color: var(--color-charcoal);
-          margin-bottom: 30px;
-          line-height: 1.8;
+          margin-bottom: 32px;
+          line-height: 2;
         }
 
         .btn-book-nav {
@@ -665,6 +765,7 @@ const Navbar = () => {
           border: none;
           padding: 12px 30px;
           font-size: 0.75rem;
+          font-family: var(--font-sans);
           text-transform: uppercase;
           letter-spacing: 0.15em;
           cursor: pointer;
@@ -674,6 +775,27 @@ const Navbar = () => {
 
         .btn-book-nav:hover {
           background-color: var(--color-gold);
+        }
+
+        .reassurance-list {
+          margin-top: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .reassurance-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-size: 0.78rem;
+          color: var(--color-charcoal);
+          letter-spacing: 0.05em;
+        }
+
+        .reassurance-item svg {
+          color: var(--color-gold);
+          flex-shrink: 0;
         }
 
         /* Mobile Drawer Menu */
@@ -846,32 +968,44 @@ const Navbar = () => {
           display: flex;
         }
 
+        @media (max-width: 1300px) {
+          .mega-menu-grid {
+            gap: 40px;
+          }
+          .collections-list a {
+            font-size: 1.1rem;
+          }
+        }
+
+        @media (max-width: 1100px) {
+          .mega-menu-grid {
+            grid-template-columns: 1fr 1.3fr 1.1fr;
+            gap: 30px;
+          }
+          .featured-card {
+            height: 240px;
+          }
+        }
+
         @media (max-width: 1024px) {
           .desktop-only {
             display: none !important;
           }
+
+          .navbar-container {
+            grid-template-columns: auto 1fr auto;
+          }
           
           .navbar-burger {
             display: block;
-            order: 1;
           }
 
           .navbar-links {
             display: none;
           }
 
-          .navbar-logo {
-            order: 2;
-          }
-
           .navbar-actions {
-            order: 3;
-            flex: none;
-          }
-          
-          .navbar-wrapper.scrolled .navbar-burger,
-          .navbar-wrapper.always-solid .navbar-burger {
-            color: var(--color-black);
+            gap: 20px;
           }
         }
       `}</style>
