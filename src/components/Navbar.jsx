@@ -52,7 +52,16 @@ const Navbar = () => {
   const isHome = pathname === '/';
 
   return (
-    <header className={`navbar-wrapper ${isHome ? 'home' : ''} ${isScrolled ? 'scrolled' : ''} ${isMegaMenuOpen ? 'mega-open' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+    <header 
+      className={`navbar-wrapper ${isHome ? 'home' : ''} ${isScrolled ? 'scrolled' : ''} ${isMegaMenuOpen ? 'mega-open' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}
+      style={isHome ? {
+        backgroundColor: (isMegaMenuOpen || isScrolled) ? '#fff' : 'rgba(255,255,255,0.01)',
+        backdropFilter: (isMegaMenuOpen || isScrolled) ? 'none' : 'blur(3px)',
+        WebkitBackdropFilter: (isMegaMenuOpen || isScrolled) ? 'none' : 'blur(3px)',
+        borderBottom: (isMegaMenuOpen || isScrolled) ? '1px solid #f5f1e9' : '1px solid rgba(255,255,255,0.1)',
+        boxShadow: (isMegaMenuOpen || isScrolled) ? '0 2px 20px rgba(0,0,0,0.03)' : 'none',
+      } : undefined}
+    >
       <div className="navbar-container">
         {/* Left Side: Burger Menu (Mobile Only) */}
           <button 
@@ -344,7 +353,25 @@ const Navbar = () => {
         .navbar-wrapper.home .navbar-action-btn,
         .navbar-wrapper.home .logo-text,
         .navbar-wrapper.home .lang-current {
-          color: var(--color-white) !important;
+          color: var(--color-white);
+        }
+
+        .navbar-wrapper.home.mega-open .nav-item,
+        .navbar-wrapper.home.mega-open .nav-item-trigger,
+        .navbar-wrapper.home.mega-open .navbar-burger,
+        .navbar-wrapper.home.mega-open .navbar-action-btn,
+        .navbar-wrapper.home.mega-open .logo-text,
+        .navbar-wrapper.home.mega-open .lang-current {
+          color: var(--color-black);
+        }
+
+        .navbar-wrapper.home.scrolled .nav-item,
+        .navbar-wrapper.home.scrolled .nav-item-trigger,
+        .navbar-wrapper.home.scrolled .navbar-burger,
+        .navbar-wrapper.home.scrolled .navbar-action-btn,
+        .navbar-wrapper.home.scrolled .logo-text,
+        .navbar-wrapper.home.scrolled .lang-current {
+          color: var(--color-black);
         }
 
         .navbar-wrapper.scrolled,
@@ -354,6 +381,14 @@ const Navbar = () => {
           -webkit-backdrop-filter: blur(20px);
           border-bottom: 1px solid rgba(255,255,255,0.08);
           box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+        }
+
+        .navbar-wrapper.home.scrolled {
+          background-color: var(--color-white);
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          border-bottom: 1px solid var(--color-beige-light);
+          box-shadow: 0 2px 20px rgba(0,0,0,0.03);
         }
 
         .navbar-wrapper.home.mega-open {

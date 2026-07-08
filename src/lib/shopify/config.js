@@ -10,7 +10,7 @@ export const shopifyConfig = {
   storefrontAccessToken: process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN || '174cc9aad6c5e4455272b5a2c9ee137b',
   
   // Version de l'API Shopify (version stable recommandée)
-  apiVersion: process.env.SHOPIFY_API_VERSION || '2025-07',
+  apiVersion: process.env.SHOPIFY_API_VERSION || '2026-07',
   
   // Language locale pour les requêtes
   defaultLocale: 'fr',

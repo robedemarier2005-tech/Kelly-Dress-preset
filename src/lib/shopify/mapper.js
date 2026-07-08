@@ -1,3 +1,5 @@
+import { getOverrideImage } from '../../data/productOverrides';
+
 /**
  * Fichier de mapping pour transformer les données Shopify vers le format existant du projet
  * Cela permet de conserver 100% du design et des composants existants
@@ -40,10 +42,13 @@ export function mapShopifyProductToDress(shopifyProduct) {
   // Extraire la collection depuis les tags ou les collections du produit
   const collection = extractCollectionFromProduct(shopifyProduct);
 
+  const reference = extractReferenceFromProduct(shopifyProduct);
+  const overrideImage = getOverrideImage(reference);
+
   return {
     id: shopifyProduct.handle, // Utiliser le handle comme ID
     name: shopifyProduct.title,
-    reference: extractReferenceFromProduct(shopifyProduct),
+    reference: reference,
     collection: collection,
     silhouette: silhouette,
     style: style,
@@ -51,7 +56,7 @@ export function mapShopifyProductToDress(shopifyProduct) {
     colors: colors,
     sizes: sizes,
     materials: materials,
-    image: mainImage?.url || '',
+    image: mainImage?.url || overrideImage || '',
     alternateImage: alternateImage?.url || '',
     gallery: gallery,
     description: shopifyProduct.description || shopifyProduct.descriptionHtml || '',

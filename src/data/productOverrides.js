@@ -1,4 +1,23 @@
 /**
+ * Surcharges d'images de produits
+ * Permet de remplacer les images Shopify par des versions personnalisées
+ */
+export const productImageOverrides = {
+  'KD-15834683343192': 'https://cdn.shopify.com/s/files/1/0989/4146/9016/files/D8E5239B-3ED9-4E7B-91AC-263357224466.jpg?v=1782677819',
+  'KD-15834687045976': 'https://cdn.shopify.com/s/files/1/0989/4146/9016/files/F525E6C7-8E64-47BC-BD82-E0FAEF07EA12.jpg?v=1782679286',
+  'KD-15834687144280': 'https://cdn.shopify.com/s/files/1/0989/4146/9016/files/37357C4F-0447-47A6-89EF-AD8DCB3B0AAC.jpg?v=1782679368',
+};
+
+/**
+ * Récupère l'image surchargée pour un produit
+ * @param {string} reference - Référence du produit
+ * @returns {string|null} URL de l'image surchargée ou null si aucune
+ */
+export function getOverrideImage(reference) {
+  return productImageOverrides[reference] || null;
+}
+
+/**
  * Surcharges de description de produits
  * Permet de remplacer les descriptions Shopify par des versions personnalisées
  */

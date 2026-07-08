@@ -11,13 +11,34 @@ export default function Home() {
   useEffect(() => { document.title = 'Kelly Dress | Robes de Mariée Haute Couture Parisienne'; }, []);
   const collectionRefs = useRef([]);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [showMore, setShowMore] = useState(false);
+  const [featuredDresses, setFeaturedDresses] = useState([]);
   const parallaxRef = useRef(null);
   const sliderImages = [
     'https://i.ibb.co/FkFWZzJj/980c30a1-fd3b-451c-b724-6e03eb444e2e.png',
     'https://i.ibb.co/SD59NTYH/4c6861f7-5c86-403f-a434-7107cfcc3826.png',
     'https://i.ibb.co/xktd8js/df6e8020-1423-4be3-9dc5-278ea60ae235.png'
   ];
+
+  const featuredRefs = ['KD-15834683343192', 'KD-15834687045976', 'KD-15834687144280'];
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const { getData } = await import('../lib/shopify');
+        const data = await getData('products');
+        console.log('All products loaded:', data.length, data.map(d => d.reference));
+        const uniqueData = Array.from(new Map(data.map(item => [item.id, item])).values());
+        const selected = featuredRefs
+          .map(ref => uniqueData.find(d => d.reference === ref || d.id === ref))
+          .filter(Boolean);
+        console.log('Selected featured:', selected.length, selected.map(d => d.reference));
+        setFeaturedDresses(selected.length > 0 ? selected : uniqueData.slice(0, 3));
+      } catch (error) {
+        console.error('Error loading products:', error);
+      }
+    };
+    loadProducts();
+  }, []);
 
   useEffect(() => {
     const handleParallax = () => {
@@ -158,41 +179,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* La Maison Section */}
+      {/* Excellence Section */}
       <section id="la-maison" className="maison-section container section-padding">
         <div className="maison-grid">
           <div className="maison-text animate-fade-in">
             <span className="section-subtitle">{t('about.subtitle')}</span>
-            <h2 className="maison-title">L'Excellence de la Haute Couture Nuptiale</h2>
+            <h2 className="maison-title">L'Excellence dans Chaque Détail</h2>
             <p className="maison-p font-serif-style">
-              Chaque mariage raconte une histoire unique. La nôtre commence par la création d'une robe qui sublime la vôtre.
+              Chaque robe Kelly Dress est une promesse tenue — celle d'un savoir-faire exigeant, d'une matière noble et d'un accompagnement à la hauteur de vos attentes.
             </p>
-            <div className={`maison-more ${showMore ? 'expanded' : ''}`}>
-              <p className="maison-p">
-                Depuis notre atelier, nous imaginons des créations d'exception où chaque détail est pensé pour révéler l'élégance, la grâce et la personnalité de chaque mariée. Chaque silhouette est entièrement façonnée à la main par des artisans passionnés, héritiers d'un savoir-faire d'excellence où la précision devient un art.
-              </p>
-              <p className="maison-p">
-                Nous sélectionnons avec exigence les plus belles matières : dentelles d'exception, soies nobles, tulles délicats et broderies raffinées, choisis pour leur légèreté, leur mouvement et leur qualité incomparable.
-              </p>
-              <p className="maison-p">
-                Notre signature associe l'élégance intemporelle de la haute couture à une vision contemporaine de la féminité. Des lignes épurées, des coupes parfaitement maîtrisées et des finitions d'une précision absolue donnent naissance à des créations qui traversent le temps sans jamais perdre leur éclat.
-              </p>
-              <p className="maison-p">
-                Plus qu'une robe, nous créons une émotion. Celle de vous sentir unique, rayonnante et inoubliable lors du plus beau jour de votre vie.
-              </p>
-            </div>
-            <div className="maison-actions">
-              <button className="btn-maison-more" onClick={() => setShowMore(!showMore)}>
-                {showMore ? 'Lire moins —' : 'Lire la suite —'}
-              </button>
-              <Link href="/about" className="btn-outline">
-                {t('about.decouvrir')}
-              </Link>
+            <p className="maison-p">
+              Nos créations naissent de matières soigneusement sélectionnées pour leur qualité exceptionnelle. Chaque silence, chaque finition, chaque couture est examiné avec la même rigueur que dans les plus grands ateliers de couture, avant de vous être confié.
+            </p>
+            <div className="trust-grid">
+              <div className="trust-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span className="trust-label">Paiement sécurisé</span>
+              </div>
+              <div className="trust-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span className="trust-label">Accompagnement sur mesure</span>
+              </div>
+              <div className="trust-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span className="trust-label">Matières d'exception</span>
+              </div>
+              <div className="trust-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span className="trust-label">Contrôle qualité rigoureux</span>
+              </div>
             </div>
           </div>
           <div className="maison-image-container animate-fade-in">
             <div className="maison-img-frame">
-              <Image src="https://i.ibb.co/VpT8RnwP/cccc.png" alt="Atelier Couture" fill sizes="(max-width: 768px) 100vw, 50vw" className="maison-img" />
+              <Image src="https://i.ibb.co/07v0Bzq/26f17a07-c620-4b21-b650-5cf9fa1a0891.png" alt="Finitions haute couture" fill sizes="(max-width: 768px) 100vw, 50vw" className="maison-img" />
             </div>
           </div>
         </div>
@@ -207,19 +227,19 @@ export default function Home() {
           </div>
 
           <div className="featured-grid">
-            {[
-              { src: 'https://i.ibb.co/23wyhDRq/dazdaz.png' },
-              { src: 'https://i.ibb.co/0RNYvXZM/1sss.png' },
-              { src: 'https://i.ibb.co/7dCH7bpP/3e51177d-e9b9-4fd3-bc16-60fd8d33e63b.jpg' }
-            ].map((img, index) => (
+            {featuredDresses.map((dress, index) => (
               <div 
-                key={index} 
+                key={dress.id} 
                 className="featured-card animate-fade-in"
                 ref={el => collectionRefs.current[index] = el}
               >
-                <Link href="/catalog" className="featured-img-wrapper" aria-label="Voir toutes les robes">
-                  <Image src={img.src} alt="" fill sizes="(max-width: 768px) 100vw, 33vw" />
+                <Link href={`/catalog/${dress.id}`} className="featured-img-wrapper" aria-label={dress.name}>
+                  <Image src={dress.image} alt={dress.name} fill sizes="(max-width: 768px) 100vw, 33vw" />
                 </Link>
+                <div className="featured-card-info">
+                  <h3>{dress.name}</h3>
+                  <span className="featured-card-price">{dress.price} €</span>
+                </div>
               </div>
             ))}
           </div>
@@ -644,17 +664,50 @@ export default function Home() {
 
         .maison-img-frame {
           position: relative;
-          padding-bottom: 125%; /* 4:5 Aspect Ratio */
+          padding-bottom: 125%;
           overflow: hidden;
         }
 
         .maison-img-frame :global(img) {
           object-fit: cover !important;
-          transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .maison-img-frame:hover :global(img) {
-          transform: scale(1.05);
+        .trust-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+          margin-top: 40px;
+        }
+
+        .trust-item {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          padding: 18px 20px;
+          background-color: transparent;
+          border: none;
+          border-bottom: 1px solid var(--color-beige-dark);
+          border-radius: 0;
+          transition: border-color 0.3s ease;
+        }
+
+        .trust-item:hover {
+          border-color: var(--color-gold);
+        }
+
+        .trust-item svg {
+          color: var(--color-gold);
+          flex-shrink: 0;
+          opacity: 0.7;
+        }
+
+        .trust-label {
+          font-family: var(--font-sans);
+          font-size: 0.75rem;
+          color: var(--color-gray-medium);
+          font-weight: 400;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
         }
 
         .maison-more {
@@ -706,12 +759,37 @@ export default function Home() {
           margin: 0 auto;
         }
 
-        .featured-card {
+        :global(.featured-card) {
           display: flex;
           flex-direction: column;
+          cursor: pointer;
         }
 
-        .featured-img-wrapper {
+        :global(.featured-card:hover .featured-img-wrapper img) {
+          transform: scale(1.03);
+        }
+
+        :global(.featured-card-info) {
+          padding: 16px 4px 0;
+          text-align: center;
+        }
+
+        :global(.featured-card-info h3) {
+          font-family: var(--font-serif);
+          font-size: 1.1rem;
+          color: var(--color-black);
+          margin-bottom: 4px;
+          font-weight: 400;
+        }
+
+        :global(.featured-card-price) {
+          font-family: var(--font-sans);
+          font-size: 0.8rem;
+          color: var(--color-gray-medium);
+          letter-spacing: 0.05em;
+        }
+
+        :global(.featured-img-wrapper) {
           position: relative;
           overflow: hidden;
           aspect-ratio: 3/4;
@@ -720,9 +798,10 @@ export default function Home() {
           padding: 8px;
         }
 
-        .featured-img-wrapper :global(img) {
+        :global(.featured-img-wrapper img) {
           object-fit: contain !important;
           object-position: center !important;
+          transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .featured-footer {
