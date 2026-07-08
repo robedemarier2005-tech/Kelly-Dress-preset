@@ -71,9 +71,9 @@ export default function Home() {
     fadeElements.forEach(el => observer.observe(el));
 
     return () => {
-      fadeElements.forEach(el => observer.unobserve(el));
+      observer.disconnect();
     };
-  }, []);
+  }, [featuredDresses]);
 
   useEffect(() => {
     const interval = setInterval(() => {

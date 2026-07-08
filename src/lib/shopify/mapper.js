@@ -1,4 +1,4 @@
-import { getOverrideImage } from '../../data/productOverrides';
+import { getOverrideImage, getOverrideSilhouette } from '../../data/productOverrides';
 
 /**
  * Fichier de mapping pour transformer les données Shopify vers le format existant du projet
@@ -44,13 +44,14 @@ export function mapShopifyProductToDress(shopifyProduct) {
 
   const reference = extractReferenceFromProduct(shopifyProduct);
   const overrideImage = getOverrideImage(reference);
+  const overrideSilhouette = getOverrideSilhouette(reference);
 
   return {
     id: shopifyProduct.handle, // Utiliser le handle comme ID
     name: shopifyProduct.title,
     reference: reference,
     collection: collection,
-    silhouette: silhouette,
+    silhouette: overrideSilhouette || silhouette,
     style: style,
     price: price,
     colors: colors,

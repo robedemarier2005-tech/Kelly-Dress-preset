@@ -18,6 +18,33 @@ export function getOverrideImage(reference) {
 }
 
 /**
+ * Surcharges de silhouette de produits
+ * Permet de remplacer la silhouette détectée par Shopify
+ */
+export const productSilhouetteOverrides = {
+  'KD-15834683343192': 'Princesse',
+  'KD-15834686194008': 'Princesse',
+  'KD-15834684719448': 'Minimaliste',
+  'KD-15834686619992': 'Sirène',
+  'KD-15834686914904': 'Sirène',
+  'KD-15834685374808': 'Mini',
+  'KD-15834687013208': 'Sirène',
+  'KD-15834685997400': 'Princesse',
+  'KD-15834687045976': 'Sirène',
+  'KD-15834686095704': 'Fourreau',
+  'KD-15834687144280': 'Sirène',
+};
+
+/**
+ * Récupère la silhouette surchargée pour un produit
+ * @param {string} reference - Référence du produit
+ * @returns {string|null} Silhouette surchargée ou null si aucune
+ */
+export function getOverrideSilhouette(reference) {
+  return productSilhouetteOverrides[reference] || null;
+}
+
+/**
  * Surcharges de description de produits
  * Permet de remplacer les descriptions Shopify par des versions personnalisées
  */
