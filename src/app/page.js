@@ -439,56 +439,90 @@ export default function Home() {
 
         .hero-ctas {
           display: flex;
-          gap: 80px;
+          gap: 24px;
           align-items: center;
         }
 
-        .hero-cta-primary {
+        :global(.hero-cta-primary) {
           display: inline-block;
-          background-color: rgba(253,251,249,0.88);
-          color: #1a1a1a;
-          padding: 18px 52px;
+          background: linear-gradient(135deg, #c5a880 0%, #d4b896 50%, #c5a880 100%);
+          color: #fff;
+          padding: 18px 50px;
           font-size: 0.65rem;
           font-family: var(--font-sans);
           text-transform: uppercase;
-          letter-spacing: 0.25em;
+          letter-spacing: 0.28em;
           text-decoration: none;
           border: none;
-          border-radius: 8px;
+          border-radius: 0;
           cursor: pointer;
-          transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-          box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+          transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+          box-shadow: 0 4px 20px rgba(197,168,128,0.3);
           font-weight: 500;
+          position: relative;
+          overflow: hidden;
         }
 
-        .hero-cta-primary:hover {
-          background-color: rgba(255,255,255,0.95);
-          transform: translateY(-3px);
-          box-shadow: 0 8px 36px rgba(0,0,0,0.16);
+        :global(.hero-cta-primary::before) {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          transition: left 0.6s ease;
         }
 
-        .hero-cta-secondary {
+        :global(.hero-cta-primary:hover::before) {
+          left: 100%;
+        }
+
+        :global(.hero-cta-primary:hover) {
+          background: linear-gradient(135deg, #b4966e 0%, #c5a880 50%, #b4966e 100%);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 32px rgba(197,168,128,0.45);
+        }
+
+        :global(.hero-cta-secondary) {
           display: inline-block;
           background: transparent;
-          border: 1px solid rgba(255,252,245,0.45);
-          color: rgba(255,252,245,0.9);
-          padding: 17px 52px;
+          border: 1.5px solid rgba(255,255,255,0.6);
+          color: #fff;
+          padding: 17px 50px;
           font-size: 0.65rem;
           font-family: var(--font-sans);
           text-transform: uppercase;
-          letter-spacing: 0.25em;
+          letter-spacing: 0.28em;
           text-decoration: none;
-          border-radius: 8px;
+          border-radius: 0;
           cursor: pointer;
-          transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
-          font-weight: 400;
+          transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+          font-weight: 500;
           position: relative;
+          overflow: hidden;
         }
 
-        .hero-cta-secondary:hover {
-          background: rgba(255,252,245,0.08);
-          border-color: rgba(255,252,245,0.7);
-          transform: translateY(-3px);
+        :global(.hero-cta-secondary::before) {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+          transition: left 0.6s ease;
+        }
+
+        :global(.hero-cta-secondary:hover::before) {
+          left: 100%;
+        }
+
+        :global(.hero-cta-secondary:hover) {
+          border-color: var(--color-gold);
+          background: rgba(197,168,128,0.15);
+          transform: translateY(-2px);
+          box-shadow: 0 8px 32px rgba(197,168,128,0.2);
         }
 
         .scroll-indicator {

@@ -52,13 +52,14 @@ const Navbar = () => {
   const isHome = pathname === '/';
 
   return (
-    <header className={`navbar-wrapper ${isHome ? 'home' : ''} ${isScrolled ? 'scrolled' : ''} ${isMegaMenuOpen ? 'mega-open' : ''}`}>
+    <header className={`navbar-wrapper ${isHome ? 'home' : ''} ${isScrolled ? 'scrolled' : ''} ${isMegaMenuOpen ? 'mega-open' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
       <div className="navbar-container">
         {/* Left Side: Burger Menu (Mobile Only) */}
           <button 
             className="navbar-burger" 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={t('nav.menu')}
+            style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}
           >
           {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -68,6 +69,7 @@ const Navbar = () => {
             href="/" 
             className={`nav-item ${pathname === '/' ? 'active' : ''}`}
             onClick={handleLinkClick}
+            style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}
           >
             {t('nav.maison')}
           </Link>
@@ -85,6 +87,7 @@ const Navbar = () => {
             <button 
               className="nav-item-trigger nav-item-trigger-btn"
               onClick={toggleMegaMenuClick}
+              style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}
             >
               {t('nav.collections')} <ChevronDown size={14} className="chevron" />
             </button>
@@ -156,6 +159,7 @@ const Navbar = () => {
             href="/catalog" 
             className={`nav-item ${pathname.startsWith('/catalog') ? 'active' : ''}`}
             onClick={handleLinkClick}
+            style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}
           >
             {t('nav.catalogue')}
           </Link>
@@ -164,6 +168,7 @@ const Navbar = () => {
             href="/about" 
             className={`nav-item ${pathname === '/about' ? 'active' : ''}`}
             onClick={handleLinkClick}
+            style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}
           >
             {t('nav.aPropos')}
           </Link>
@@ -171,7 +176,7 @@ const Navbar = () => {
 
         {/* Center: Brand Logo */}
         <Link href="/" className="navbar-logo" onClick={handleLinkClick}>
-          <span className="logo-text">Kelly Dress</span>
+          <span className="logo-text" style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}>Kelly Dress</span>
         </Link>
 
         {/* Right Side: Links & Actions */}
@@ -180,6 +185,7 @@ const Navbar = () => {
             href="/contact" 
             className={`nav-item desktop-only ${pathname === '/contact' ? 'active' : ''}`}
             onClick={handleLinkClick}
+            style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}
           >
             {t('nav.contact')}
           </Link>
@@ -195,7 +201,11 @@ const Navbar = () => {
               langMenuTimer.current = setTimeout(() => setIsLangMenuOpen(false), 300);
             }}
           >
-            <button className="navbar-action-btn lang-btn" onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}>
+            <button 
+              className="navbar-action-btn lang-btn" 
+              onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+              style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}
+            >
               <Globe size={18} />
               <span className="lang-current">{lang.toUpperCase()}</span>
             </button>
@@ -211,6 +221,7 @@ const Navbar = () => {
             className="navbar-action-btn wishlist-icon-wrapper"
             onClick={handleLinkClick}
             aria-label={t('nav.favoris')}
+            style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}
           >
             <Heart size={18} className={wishlist.length > 0 ? 'filled-heart' : ''} />
             {wishlist.length > 0 && <span className="wishlist-badge">{wishlist.length}</span>}
@@ -220,6 +231,7 @@ const Navbar = () => {
             className="navbar-action-btn cart-icon-wrapper-nav"
             onClick={openCart}
             aria-label={t('nav.panier')}
+            style={isHome ? { color: (!isScrolled && !isMegaMenuOpen) ? '#fff' : '#111' } : undefined}
           >
             <ShoppingBag size={18} />
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
@@ -231,7 +243,7 @@ const Navbar = () => {
       <div className={`mobile-drawer ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-drawer-content">
           <div className="mobile-drawer-links">
-            <Link href="/" onClick={handleLinkClick}>{t('nav.maison')}</Link>
+            <Link href="/" onClick={handleLinkClick} className="mobile-nav-btn">{t('nav.maison')}</Link>
             <div className="mobile-subheader">{t('nav.collections')}</div>
             <div className="mobile-collections-grid">
               {activeCollections.map((col) => (
@@ -246,27 +258,33 @@ const Navbar = () => {
                   </div>
                   <div className="mobile-col-card-body">
                     <span className="mobile-col-name">{col.name}</span>
-                    <span className="mobile-col-desc">{col.description}</span>
                   </div>
                 </Link>
               ))}
             </div>
-            <Link href="/catalog" onClick={handleLinkClick}>{t('nav.catalogue')}</Link>
-            <Link href="/about" onClick={handleLinkClick}>{t('nav.aPropos')}</Link>
-            <Link href="/contact" onClick={handleLinkClick}>{t('nav.contact')}</Link>
-            <Link href="/wishlist" onClick={handleLinkClick}>{t('nav.favoris')} ({wishlist.length})</Link>
+            <div className="mobile-divider"></div>
+            <div className="mobile-nav-links">
+              <Link href="/catalog" onClick={handleLinkClick} className="mobile-nav-btn">{t('nav.catalogue')}</Link>
+              <Link href="/about" onClick={handleLinkClick} className="mobile-nav-btn">{t('nav.aPropos')}</Link>
+              <Link href="/contact" onClick={handleLinkClick} className="mobile-nav-btn">{t('nav.contact')}</Link>
+              <Link href="/wishlist" onClick={handleLinkClick} className="mobile-nav-btn-wishlist">
+                {t('nav.favoris')} ({wishlist.length})
+              </Link>
+            </div>
+          </div>
+          <div className="mobile-bottom-section">
+            <button className="btn-gold-mobile" onClick={() => {
+              setIsMobileMenuOpen(false);
+              openCart();
+            }}>
+              {t('nav.voirPanier')} ({cartCount})
+            </button>
             <div className="mobile-lang-row">
               <button onClick={() => { setLang('fr'); setIsMobileMenuOpen(false); }} className={lang === 'fr' ? 'active' : ''}>FR</button>
               <button onClick={() => { setLang('en'); setIsMobileMenuOpen(false); }} className={lang === 'en' ? 'active' : ''}>EN</button>
               <button onClick={() => { setLang('es'); setIsMobileMenuOpen(false); }} className={lang === 'es' ? 'active' : ''}>ES</button>
             </div>
           </div>
-          <button className="btn-gold-mobile" onClick={() => {
-            setIsMobileMenuOpen(false);
-            openCart();
-          }}>
-            {t('nav.voirPanier')} ({cartCount})
-          </button>
         </div>
       </div>
 
@@ -320,13 +338,13 @@ const Navbar = () => {
           color: var(--color-black);
         }
 
-        .navbar-wrapper:not(.scrolled):not(.mega-open) .nav-item,
-        .navbar-wrapper:not(.scrolled):not(.mega-open) .nav-item-trigger,
-        .navbar-wrapper:not(.scrolled):not(.mega-open) .navbar-burger,
-        .navbar-wrapper:not(.scrolled):not(.mega-open) .navbar-action-btn,
-        .navbar-wrapper:not(.scrolled):not(.mega-open) .logo-text,
-        .navbar-wrapper:not(.scrolled):not(.mega-open) .lang-current {
-          color: var(--color-white);
+        .navbar-wrapper.home .nav-item,
+        .navbar-wrapper.home .nav-item-trigger,
+        .navbar-wrapper.home .navbar-burger,
+        .navbar-wrapper.home .navbar-action-btn,
+        .navbar-wrapper.home .logo-text,
+        .navbar-wrapper.home .lang-current {
+          color: var(--color-white) !important;
         }
 
         .navbar-wrapper.scrolled,
@@ -336,6 +354,28 @@ const Navbar = () => {
           -webkit-backdrop-filter: blur(20px);
           border-bottom: 1px solid rgba(255,255,255,0.08);
           box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+        }
+
+        .navbar-wrapper.home.mega-open {
+          background-color: var(--color-white);
+          backdrop-filter: none;
+          -webkit-backdrop-filter: none;
+          border-bottom: 1px solid var(--color-beige-light);
+        }
+
+        .navbar-wrapper.mobile-open {
+          background-color: var(--color-white) !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          border-bottom: 1px solid var(--color-beige-light);
+          box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .navbar-wrapper.mobile-open .navbar-burger,
+        .navbar-wrapper.mobile-open .navbar-action-btn,
+        .navbar-wrapper.mobile-open .logo-text,
+        .navbar-wrapper.mobile-open .lang-current {
+          color: var(--color-black) !important;
         }
 
         .navbar-wrapper.scrolled .nav-item,
@@ -810,8 +850,7 @@ const Navbar = () => {
           transform: translateY(-100%);
           opacity: 0;
           visibility: hidden;
-          transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s, visibility 0.6s;
-          border-top: 1px solid var(--color-beige-light);
+          transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s, visibility 0.5s;
           overflow-y: auto;
         }
 
@@ -822,44 +861,91 @@ const Navbar = () => {
         }
 
         .mobile-drawer-content {
-          padding: 40px;
+          padding: 24px 28px;
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
-          min-height: calc(100vh - var(--navbar-height) - 40px);
+          height: calc(100vh - var(--navbar-height));
         }
 
         .mobile-drawer-links {
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 0;
+          flex: 1;
+          overflow-y: auto;
         }
 
-        .mobile-drawer-links a {
-          text-align: left;
-          font-family: var(--font-serif);
-          font-size: 1.8rem;
-          color: var(--color-black);
-          cursor: pointer;
-          padding: 5px 0;
+        .mobile-nav-links {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          margin-top: 8px;
+        }
+
+        .mobile-nav-btn {
           display: block;
+          width: 100%;
+          text-align: center;
+          font-family: var(--font-serif);
+          font-size: 1.3rem;
+          color: var(--color-black) !important;
+          cursor: pointer;
+          padding: 14px 16px;
+          background-color: var(--color-ivory);
+          border: 1px solid var(--color-beige-light);
+          border-radius: 8px;
+          letter-spacing: 0.02em;
+          transition: all 0.25s ease;
+          text-decoration: none;
+        }
+
+        .mobile-nav-btn:hover {
+          border-color: var(--color-gold);
+          background-color: var(--color-white);
+          color: var(--color-gold) !important;
+        }
+
+        .mobile-nav-btn-wishlist {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
+          text-align: center;
+          font-family: var(--font-serif);
+          font-size: 1.3rem;
+          color: var(--color-black) !important;
+          cursor: pointer;
+          padding: 14px 16px;
+          background-color: var(--color-ivory);
+          border: 1px solid var(--color-beige-light);
+          border-radius: 8px;
+          letter-spacing: 0.02em;
+          transition: all 0.25s ease;
+          text-decoration: none;
+        }
+
+        .mobile-nav-btn-wishlist:hover {
+          border-color: var(--color-gold);
+          background-color: var(--color-white);
         }
 
         .mobile-subheader {
           font-family: var(--font-sans);
-          font-size: 0.7rem;
+          font-size: 0.65rem;
           text-transform: uppercase;
-          letter-spacing: 0.25em;
+          letter-spacing: 0.3em;
           color: var(--color-gold);
-          margin-top: 15px;
-          margin-bottom: 5px;
+          margin-top: 20px;
+          margin-bottom: 10px;
+          font-weight: 500;
         }
 
         .mobile-collections-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 15px;
-          margin: 15px 0 25px 0;
+          gap: 10px;
+          margin: 0 0 10px 0;
         }
 
         .mobile-col-card {
@@ -869,13 +955,14 @@ const Navbar = () => {
           background-color: var(--color-ivory);
           border: 1px solid var(--color-beige-light);
           overflow: hidden;
-          transition: var(--transition-fast);
+          transition: all 0.25s ease;
+          border-radius: 8px;
         }
 
         .mobile-col-card:hover {
           border-color: var(--color-gold);
           transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
         }
 
         .mobile-col-img {
@@ -888,7 +975,7 @@ const Navbar = () => {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.6s ease;
+          transition: transform 0.5s ease;
         }
 
         .mobile-col-card:hover .mobile-col-img img {
@@ -896,47 +983,64 @@ const Navbar = () => {
         }
 
         .mobile-col-card-body {
-          padding: 12px;
+          padding: 8px 10px;
         }
 
         .mobile-col-name {
           font-family: var(--font-serif);
-          font-size: 1rem;
+          font-size: 0.85rem;
           color: var(--color-black);
           display: block;
-          margin-bottom: 4px;
+          margin-bottom: 2px;
         }
 
         .mobile-col-desc {
           font-family: var(--font-sans);
-          font-size: 0.65rem;
+          font-size: 0.58rem;
           color: var(--color-gray-medium);
-          line-height: 1.4;
+          line-height: 1.3;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
 
+        .mobile-divider {
+          height: 1px;
+          background-color: var(--color-beige-light);
+          margin: 12px 0;
+        }
+
+        .mobile-bottom-section {
+          padding-top: 16px;
+          border-top: 1px solid var(--color-beige-light);
+          flex-shrink: 0;
+        }
+
         .btn-gold-mobile {
           background-color: var(--color-gold);
           color: var(--color-white);
           border: none;
-          padding: 16px;
-          font-size: 0.8rem;
+          padding: 15px;
+          font-size: 0.72rem;
           text-transform: uppercase;
           letter-spacing: 0.2em;
           width: 100%;
           cursor: pointer;
-          margin-top: 40px;
+          border-radius: 8px;
+          font-family: var(--font-sans);
+          font-weight: 500;
+          transition: background-color 0.25s ease;
+        }
+
+        .btn-gold-mobile:hover {
+          background-color: var(--color-gold-hover);
         }
 
         .mobile-lang-row {
           display: flex;
-          gap: 10px;
-          margin-top: 20px;
-          padding-top: 20px;
-          border-top: 1px solid var(--color-beige-light);
+          gap: 8px;
+          margin-top: 12px;
         }
 
         .mobile-lang-row button {
@@ -944,13 +1048,14 @@ const Navbar = () => {
           padding: 10px;
           background: none;
           border: 1px solid var(--color-beige-dark);
-          font-size: 0.75rem;
+          font-size: 0.68rem;
           text-transform: uppercase;
           letter-spacing: 0.15em;
           color: var(--color-black);
           cursor: pointer;
-          transition: var(--transition-fast);
+          transition: all 0.2s ease;
           font-family: var(--font-sans);
+          border-radius: 6px;
         }
 
         .mobile-lang-row button:hover {

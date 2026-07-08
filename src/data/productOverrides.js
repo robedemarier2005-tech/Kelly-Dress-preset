@@ -325,7 +325,6 @@ export const productNameOverrides = {
 export const productMaterialsOverrides = {
   'KD-15834686194008': `Confectionnée en dentelle florale premium brodée sur une base de tulle haute qualité, cette robe allie romantisme et savoir-faire haute couture. Le bustier corseté est renforcé par une structure interne avec baleines souples offrant un maintien exceptionnel et une silhouette parfaitement sculptée. Les manches longues en dentelle transparente sont délicatement ornées de broderies florales et terminées par des finitions festonnées raffinées. La jupe princesse est composée de plusieurs épaisseurs de tulle souple, de dentelle brodée et d'une doublure satinée premium afin d'offrir un volume généreux tout en conservant une grande légèreté. Les motifs floraux se prolongent harmonieusement jusqu'à la traîne pour créer un effet majestueux sous tous les angles. Chaque détail est réalisé avec des finitions haute couture, des coutures invisibles et des broderies minutieusement appliquées, garantissant un tombé impeccable, un confort durable et une élégance intemporelle digne des plus belles créations de mariage.`,
   'KD-15834687013208': `Confectionnée dans une combinaison luxueuse de satin duchesse premium et de tulle brodé entièrement rehaussé de perles, de sequins et de cristaux délicatement cousus à la main, cette robe offre un équilibre parfait entre éclat et sophistication. Le bustier corseté est doté d'une structure interne avec baleines souples assurant un maintien exceptionnel, une taille parfaitement définie et un confort optimal. La robe sirène épouse harmonieusement les courbes grâce à une doublure en crêpe stretch haut de gamme, tandis que les manches longues sont entièrement brodées de perles et de sequins pour un effet lumineux raffiné. La spectaculaire surjupe amovible, confectionnée en satin duchesse au tombé lourd et majestueux, apporte volume et prestance tout en permettant de transformer facilement la silhouette entre la cérémonie et la réception. Les coutures invisibles, les finitions haute couture et le travail minutieux des broderies garantissent une qualité exceptionnelle, un tombé impeccable et une élégance intemporelle digne des plus prestigieuses maisons de couture.`,
-  'KD-15834683343192': `Confectionnée dans un satin duchesse premium au tombé lourd et luxueux, cette robe présente un corsage structuré avec baleines intégrées assurant un maintien parfait et une silhouette sculptée. La jupe est réalisée avec plusieurs panneaux de satin pour offrir un volume naturel sans excès. Doublure intérieure douce et respirante pour un confort optimal durant toute la journée. Finitions haute couture avec coutures invisibles, bords soigneusement travaillés et traîne élégamment intégrée. Chaque robe est confectionnée avec une attention particulière aux détails afin d'offrir une qualité exceptionnelle, un tombé impeccable et une durabilité remarquable.`,
 };
 
 /**
@@ -333,6 +332,17 @@ export const productMaterialsOverrides = {
  * Permet de remplacer la table Matières & Confection par des données personnalisées
  */
 export const productMaterialsTableOverrides = {
+  'KD-15834683343192': [
+    { label: 'Coupe', value: 'Princesse structurée' },
+    { label: 'Matière', value: 'Satin duchesse premium' },
+    { label: 'Corsage', value: 'Structuré avec baleines intégrées' },
+    { label: 'Jupe', value: 'Volume naturel en panneaux de satin' },
+    { label: 'Doublure', value: 'Douce et respirante' },
+    { label: 'Taille', value: 'Cintrée et sculptée' },
+    { label: 'Traîne', value: 'Élégamment intégrée' },
+    { label: 'Finitions', value: 'Coutures invisibles, haute couture' },
+    { label: 'Style', value: 'Royal, intemporel et raffiné' },
+  ],
   'KD-15834686194008': [
     { label: 'Coupe', value: 'Princesse' },
     { label: 'Décolleté', value: 'Cœur épaules dénudées' },
