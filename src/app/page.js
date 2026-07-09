@@ -710,43 +710,6 @@ export default function Home() {
           text-transform: uppercase;
         }
 
-        .maison-more {
-          overflow: hidden;
-          max-height: 0;
-          opacity: 0;
-          transition: max-height 0.6s ease, opacity 0.6s ease;
-        }
-
-        .maison-more.expanded {
-          max-height: 800px;
-          opacity: 1;
-        }
-
-        .maison-actions {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          margin-top: 10px;
-        }
-
-        .btn-maison-more {
-          background: none;
-          border: none;
-          font-size: 0.7rem;
-          text-transform: uppercase;
-          letter-spacing: 0.25em;
-          color: var(--color-black);
-          cursor: pointer;
-          padding: 0;
-          font-family: inherit;
-          transition: var(--transition-fast);
-          opacity: 0.6;
-        }
-
-        .btn-maison-more:hover {
-          opacity: 1;
-        }
-
         .featured-section {
           background-color: var(--color-white);
         }
